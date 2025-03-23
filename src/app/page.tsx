@@ -1,7 +1,11 @@
-import Image from "next/image";
+import Hero from "@/components/hero";
 
 export default function Home() {
   return (
-    <h2>Sattis Studio</h2>
+    <div className="bg-gray-900 text-white">
+      <div>
+        <Hero/>
+      </div>
+    </div>
   );
 }
