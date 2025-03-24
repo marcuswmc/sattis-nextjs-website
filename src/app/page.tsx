@@ -9,13 +9,13 @@ import TattooSection from "@/components/tattooSection";
 export default function Home() {
   return (
     <main>
-      <div id="inicio">
+      <div id="inicio" className="scroll-mt-5">
         <Hero />
       </div>
-      <div id="studio">
+      <div id="studio" className="scroll-mt-5">
         <AboutSection />
       </div>
-      <div id="barbearia">
+      <div id="barbearia" className="scroll-mt-5">
         <BarberSection />
       </div>
       <div className="py-28 px-8 md:px-16 text-right">
@@ -27,7 +27,7 @@ export default function Home() {
           </span>
         </h3>
       </div>
-      <div id="tattoos">
+      <div id="tattoos" className="scroll-mt-5">
         <TattooSection />
       </div>
       <div className="py-28 px-8 md:px-16 text-left">
@@ -37,7 +37,7 @@ export default function Home() {
           e atitude.
         </h3>
       </div>
-      <div id="estetica">
+      <div id="estetica" className="scroll-mt-5">
         <EsteticaSection />
       </div>
       <div className="py-28 px-8 md:px-16 text-right">
@@ -47,7 +47,7 @@ export default function Home() {
           <span className="font-medium">expressamos a sua identidade</span>.
         </h3>
       </div>
-      <div id="piercings">
+      <div id="piercings" className="scroll-mt-5">
         <PiercingSection />
       </div>
       <Footer />
