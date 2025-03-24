@@ -17,7 +17,7 @@ export default function SwiperSlider() {
 
   return (
     <div className="w-full flex flex-col md:flex-row items-end md:items-end gap-8">
-      <div className="flex flex-col items-end md:items-start gap-5 md:w-[20%] order-2 md:order-first pr-5">
+      <div className="flex flex-col items-end md:items-start gap-5 md:w-[20%] order-2 md:order-first pr-8">
         <p className="text-2xl">Veja mais estilos</p>
         <div className="flex gap-2">
           <button

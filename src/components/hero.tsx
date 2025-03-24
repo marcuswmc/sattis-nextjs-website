@@ -1,29 +1,31 @@
-import Image from "next/image";
-
-import heroBg from "@/data/imgs/bg-hero.jpg";
 import { Button } from "./ui/button";
 import { Calendar } from "lucide-react";
 
 export default function Hero() {
   return (
-    <div
-      className="h-[700px] md:h-screen bg-cover bg-center flex flex-col items-end justify-end pb-20 px-5 md:px-16 w-full"
-      style={{ backgroundImage: `url(${heroBg.src})` }}
-    >
-      <Image
-        src={heroBg}
-        alt="Sattis background"
-        className="hidden"
-        quality={100}
-      />
-      <div></div>
+    <section className="relative h-[700px] md:h-screen flex flex-col items-end justify-end pb-20 px-8 md:px-16 w-full">
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute top-0 left-0 w-full h-full object-cover filter grayscale"
+      >
+        <source src="/videos/background-video.webm" type="video/webm" />
+        <source src="/videos/background-video.mp4" type="video/mp4" />
+        Erro to rendering background video
+      </video>
 
-      <div>
+      
+      <div className="absolute top-0 left-0 w-full h-full bg-black/40 filter grayscale"></div>
+
+
+      <div className="relative z-10">
         <Button variant="outline" className="text-md">
-          Marcar horario
+          Marcar horário
           <Calendar />
         </Button>
       </div>
-    </div>
+    </section>
   );
 }
