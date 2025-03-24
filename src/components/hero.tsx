@@ -7,7 +7,7 @@ import { Calendar } from "lucide-react";
 export default function Hero() {
   return (
     <div
-      className="h-screen bg-cover bg-center flex flex-col items-end justify-end pb-20 px-5 md:px-16 w-full"
+      className="h-[700px] md:h-screen bg-cover bg-center flex flex-col items-end justify-end pb-20 px-5 md:px-16 w-full"
       style={{ backgroundImage: `url(${heroBg.src})` }}
     >
       <Image
