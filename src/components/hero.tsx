@@ -1,16 +1,24 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Button } from "./ui/button";
 import { Calendar, X } from "lucide-react";
 
 export default function Hero() {
   const [showForm, setShowForm] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.muted = true;
+      videoRef.current.play(); 
+    }
+  }, []);
 
   return (
     <section className="relative h-[700px] md:h-screen flex flex-col items-end justify-end pb-20 px-8 md:px-16 w-full">
-      {/* Vídeo de fundo */}
       <video
+        ref={videoRef}
         autoPlay
         loop
         muted
@@ -21,10 +29,10 @@ export default function Hero() {
         Erro ao carregar o vídeo.
       </video>
 
-      {/* Overlay preto para contraste */}
+
       <div className="absolute top-0 left-0 w-full h-full bg-black/40 filter grayscale"></div>
 
-      {/* Botão de Agendamento */}
+
       <div className="relative z-10">
         <Button
           variant="outline"
