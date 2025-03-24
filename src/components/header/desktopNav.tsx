@@ -5,10 +5,10 @@ import Link from "next/link";
 
 const links = [
   { name: "Início", path: "#inicio" },
-  { name: "Barbearia", path: "#barbearia-section" },
-  { name: "Tattoo", path: "#tattoo-section" },
-  { name: "Estética", path: "#estetica-section" },
-  { name: "Piercings", path: "#piercings-section" },
+  { name: "Barbearia", path: "#barbearia" },
+  { name: "Tattoo", path: "#tattoos" },
+  { name: "Estética", path: "#estetica" },
+  { name: "Piercings", path: "#piercings" },
 ];
 
 export default function DesktopNav() {

@@ -9,13 +9,13 @@ import TattooSection from "@/components/tattooSection";
 export default function Home() {
   return (
     <main>
-      <div>
+      <div id="inicio">
         <Hero />
       </div>
-      <div>
+      <div id="studio">
         <AboutSection />
       </div>
-      <div>
+      <div id="barbearia">
         <BarberSection />
       </div>
       <div className="py-28 px-8 md:px-16 text-right">
@@ -27,7 +27,7 @@ export default function Home() {
           </span>
         </h3>
       </div>
-      <div>
+      <div id="tattoos">
         <TattooSection />
       </div>
       <div className="py-28 px-8 md:px-16 text-left">
@@ -37,7 +37,7 @@ export default function Home() {
           e atitude.
         </h3>
       </div>
-      <div>
+      <div id="estetica">
         <EsteticaSection />
       </div>
       <div className="py-28 px-8 md:px-16 text-right">
@@ -47,7 +47,7 @@ export default function Home() {
           <span className="font-medium">expressamos a sua identidade</span>.
         </h3>
       </div>
-      <div>
+      <div id="piercings">
         <PiercingSection />
       </div>
       <Footer />
