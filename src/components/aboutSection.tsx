@@ -3,8 +3,8 @@ import { Button } from "./ui/button";
 
 export default function AboutSection() {
   return (
-    <div className="py-20 px-5 md:px-16 w-full">
-      <div className="flex flex-col md:flex-row gap-14 items-start md:items-center justify-between">
+    <div className="py-20 overflow-hidden w-full">
+      <div className="flex flex-col md:flex-row gap-14 px-5 md:px-16 items-start md:items-center justify-between">
         <div className="flex flex-col gap-5 md:w-[50%]">
           <h2 className="text-4xl">
             Transformamos<br/> estilo em{" "}
@@ -21,7 +21,7 @@ export default function AboutSection() {
           <Button className="text-md">Ver serviços</Button>
         </div>
       </div>
-      <div className="py-16">
+      <div className="py-16 pl-5 md:pl-16">
         <SwiperSlider/>
       </div>
     </div>
