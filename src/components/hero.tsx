@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Button } from "./ui/button";
 import { Calendar, X } from "lucide-react";
+import FormModal from "./formModal";
 
 export default function Hero() {
   const [showForm, setShowForm] = useState(false);
@@ -25,7 +26,8 @@ export default function Hero() {
         playsInline
         className="absolute top-0 left-0 w-full h-full object-cover filter grayscale"
       >
-        <source src="/videos/background-video.mp4" type="video/mp4" />
+        <source src="/videos/background-video.webm" type="video/webm"/>
+        <source src="/videos/background-video.mp4" type="video/mp4"/>
         Erro ao carregar o vídeo.
       </video>
 
@@ -45,25 +47,7 @@ export default function Hero() {
       </div>
 
       {/* Modal do Formulário */}
-      {showForm && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black/60 z-50">
-          <div className="relative bg-white rounded-lg w-full max-w-[450px] shadow-lg p-5">
-            {/* Botão de Fechar */}
-            <button
-              className="absolute top-3 right-3 text-gray-600 hover:text-black"
-              onClick={() => setShowForm(false)}
-            >
-              <X size={24} />
-            </button>
-
-            {/* Formulário via Iframe */}
-            <iframe
-              src="https://www.sattis.me/appointment"
-              className="w-full h-[600px] border-none"
-            />
-          </div>
-        </div>
-      )}
+      <FormModal isOpen={showForm} onClose={() => setShowForm(false)} />
     </section>
   );
 }

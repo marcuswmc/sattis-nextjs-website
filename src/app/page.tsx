@@ -19,7 +19,7 @@ export default function Home() {
         <BarberSection />
       </div>
       <div className="py-28 px-8 md:px-16 text-right">
-        <h3 className="text-4xl">
+        <h3 className="text-5xl">
           Descubra a fusão perfeita entre{" "}
           <span className="font-medium">
             estilo,
@@ -31,7 +31,7 @@ export default function Home() {
         <TattooSection />
       </div>
       <div className="py-28 px-8 md:px-16 text-left">
-        <h3 className="text-4xl">
+        <h3 className="text-5xl">
           Cada detalhe conta. <br />
           <span className="font-medium">Eleve sua aparência</span> com confiança
           e atitude.
@@ -41,7 +41,7 @@ export default function Home() {
         <EsteticaSection />
       </div>
       <div className="py-28 px-8 md:px-16 text-right">
-        <h3 className="text-4xl">
+        <h3 className="text-5xl">
           Mais que tatuagens e piercings,
           <br />{" "}
           <span className="font-medium">expressamos a sua identidade</span>.
