@@ -1,33 +1,56 @@
-'use client'
+"use client";
 
 import { X } from "lucide-react";
+import AppointmentForm from "./appointmentForm/AppointmentForm";
+import Image from "next/image";
+import imgBg from "@/data/imgs/bg-hero.jpg";
+import { Button } from "./ui/button";
+import { useRef } from "react";
 
 interface ModalProps {
   isOpen: boolean;
   onClose: () => void;
 }
 
+export default function FormModal({ isOpen, onClose }: ModalProps) {
+  const modalRef = useRef<HTMLDivElement>(null);
 
-export default function FormModal({isOpen, onClose}: ModalProps) {
-  if(!isOpen) return null;
-  
+  const handleOutsideClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (modalRef.current && !modalRef.current.contains(e.target as Node)) {
+      onClose();
+    }
+  };
+
+  if (!isOpen) return null;
+
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-black/60 z-50">
-          <div className="relative bg-white rounded-lg w-full max-w-[450px] shadow-lg p-5">
-            {/* Botão de Fechar */}
-            <button
-              className="absolute top-3 right-3 text-gray-600 hover:text-black"
-              onClick={onClose}
-            >
-              <X size={24} />
-            </button>
-
-            {/* Formulário via Iframe */}
-            <iframe
-              src="https://app.sattis.me/appointment"
-              className="w-full h-[600px] border-none"
-            />
+    <div 
+      className="fixed inset-0 flex items-center justify-center bg-black/50 z-50"
+      onClick={handleOutsideClick}
+    >
+      <div 
+        ref={modalRef}
+        className="relative flex flex-col items-center h-[calc(100vh_-_20%)] md:h-[calc(100vh_-_10%)] bg-black rounded-lg w-full md:max-w-[600px] max-w-[450px] shadow-lg"
+      >
+        <div className="relative w-full">
+          <Image 
+            src={imgBg} 
+            alt="Marcações" 
+            className="rounded-t-lg object-cover w-full"
+          />
+          <button
+            className="absolute top-3 right-3 text-gray-600 hover:text-black"
+            onClick={onClose}
+          >
+            <X size={24} />
+          </button>
+        </div>
+        <div className="p-6 w-full -mt-40 relative z-10 rounded-b-lg">
+          <div className="flex justify-center">
+            <AppointmentForm />
           </div>
         </div>
-  )
+      </div>
+    </div>
+  );
 }

@@ -2,9 +2,10 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetHeader, SheetTrigger } from "@/components/ui/sheet";
 import { Menu, Calendar } from "lucide-react";
 import { Button } from "../ui/button";
+import { DialogTitle } from "@radix-ui/react-dialog";
 
 const links = [
   { name: "Início", path: "#inicio" },
@@ -59,11 +60,15 @@ export default function MobileNav() {
 
   return (
     <Sheet open={open} onOpenChange={setOpen}>
+
       <SheetTrigger asChild>
         <button className="md:hidden p-2 bg-transparent text-white">
           <Menu size={24} />
         </button>
       </SheetTrigger>
+      <SheetHeader className="hidden">
+        <DialogTitle>Navigation</DialogTitle>
+      </SheetHeader>
       <SheetContent side="right" className="bg-black/2 backdrop-blur-md p-5 flex flex-col justify-between items-end pb-20">
         <nav className="flex flex-col items-end gap-11 pt-20">
           {links.map((link, index) => (
