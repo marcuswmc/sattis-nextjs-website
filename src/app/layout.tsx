@@ -5,7 +5,6 @@ import Header from "@/components/header/header";
 import { AppointmentsProvider } from "@/hooks/appointments-context";
 import { Suspense } from "react";
 
-
 const bricolageFont = Bricolage_Grotesque({
   variable: "--font-bricolage",
   subsets: ["latin"],
@@ -23,14 +22,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${bricolageFont.variable} antialiased`}
-      >
-        <Suspense fallback={<div>Loading...</div>}>
-        <AppointmentsProvider>
-        <Header/>
-        {children}
-        </AppointmentsProvider>
+      <body className={`${bricolageFont.variable} antialiased`}>
+        <Suspense>
+          <AppointmentsProvider>
+            <Header />
+            {children}
+          </AppointmentsProvider>
         </Suspense>
       </body>
     </html>
