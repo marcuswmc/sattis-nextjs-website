@@ -1,14 +1,9 @@
 "use client";
 import { z } from "zod";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
 import {
   Card,
   CardContent,
@@ -18,24 +13,28 @@ import {
 } from "@/components/ui/card";
 import { Calendar } from "@/components/ui/calendar";
 import { pt } from "date-fns/locale";
-import { format, addDays } from "date-fns";
-import { cn } from "@/lib/utils";
+import { format } from "date-fns";
 import {
   Professional,
   Service,
   useAppointments,
 } from "@/hooks/appointments-context";
 import { toast } from "sonner";
-import { CalendarIcon, Euro, Hourglass, Loader2, MessageCircle, Timer } from "lucide-react";
+import {
+  ChevronLeft,
+  ChevronRight,
+  Euro,
+  Hourglass,
+  Loader2,
+  MessageCircle,
+} from "lucide-react";
 import { ScrollArea } from "../ui/scroll-area";
 
-// Definindo um tipo para Categoria
 interface Category {
   _id: string;
   name: string;
 }
 
-// Esquema de validação com Zod (mantido o mesmo)
 const AppointmentSchema = z.object({
   customerName: z
     .string()
@@ -67,7 +66,6 @@ const AppointmentForm = () => {
     fetchAppointments,
   } = useAppointments();
 
-  // Novo estado para categorias
   const [categories, setCategories] = useState<Category[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string>("");
   const [step, setStep] = useState(1);
@@ -87,12 +85,18 @@ const AppointmentForm = () => {
   const [validationErrors, setValidationErrors] = useState<{
     [key: string]: string;
   }>({});
-
   const [loading, setLoading] = useState(false);
 
-  const [open, setOpen] = useState(false);
+  const timeScrollRef = useRef<HTMLDivElement>(null);
 
-  // Buscar categorias ao carregar o componente
+  const scrollLeft = () => {
+    timeScrollRef.current?.scrollBy({ left: -120, behavior: "smooth" });
+  };
+
+  const scrollRight = () => {
+    timeScrollRef.current?.scrollBy({ left: 120, behavior: "smooth" });
+  };
+
   useEffect(() => {
     const fetchCategories = async () => {
       try {
@@ -114,7 +118,6 @@ const AppointmentForm = () => {
     fetchAppointments(undefined);
   }, [fetchServicesAndProfessionals, fetchAppointments]);
 
-  // Filtrar serviços por categoria selecionada
   const filteredServices = services.filter(
     (service: Service) => service.category === selectedCategory
   );
@@ -133,7 +136,7 @@ const AppointmentForm = () => {
       const fetchAvailableTimes = async () => {
         try {
           const response = await fetch(
-            `https://services-appointment-api.onrender.com/api/services/available?date=${formData.date}`
+            `${process.env.NEXT_PUBLIC_API_URL}/services/available?date=${formData.date}`
           );
           if (!response.ok)
             throw new Error("Erro ao buscar horários disponíveis");
@@ -172,13 +175,12 @@ const AppointmentForm = () => {
   }, [selectedService, formData.date, selectedProfessional, appointments]);
 
   const isDateDisabled = (date: Date) => {
-    // Disable Sundays and Mondays
+    // Desabilitar domingos e segundas-feiras
     return date.getDay() === 0 || date.getDay() === 1;
   };
 
   const validateStep = () => {
     try {
-      // Validação para os passos
       if (step === 1 && !selectedCategory) {
         toast("Selecione uma categoria");
         return false;
@@ -205,7 +207,6 @@ const AppointmentForm = () => {
         }
       }
 
-      // Validação completa no último passo
       if (step === 5) {
         const fullData = {
           ...formData,
@@ -291,7 +292,7 @@ const AppointmentForm = () => {
                 <MessageCircle size={18} />
                 <span className="font-light text-[10px]">
                   * Ao clicar em <span className="font-bold">tattoo</span> ou{" "}
-                  <span className="font-bold">piercing</span> será redirecionado{" "}
+                  <span className="font-bold">piercing</span> será redirecionado
                   <br />
                   para o atendimento via whatsapp.
                 </span>
@@ -353,36 +354,36 @@ const AppointmentForm = () => {
           </CardHeader>
           <CardContent>
             <ScrollArea className="h-[280px]">
-            <div className="grid gap-2">
-              {filteredServices.map((service: Service) => (
-                <Button
-                  key={service._id}
-                  className={`py-10 px-4 bg-gray-900 text-foreground rounded-md border border-border hover:bg-accent hover:text-accent-foreground flex ${
-                    selectedService === service._id
-                      ? "bg-gray-500 text-accent-foreground hover:bg-gray-500"
-                      : ""
-                  }`}
-                  onClick={() => setSelectedService(service._id)}
-                >
-                  <div className="w-full flex flex-col gap-2 items-start">
-                    <div className="flex flex-col items-start">
-                      <div className="text-md">{service.name}</div>
-                      <div className="text-[10px] font-light truncate">
-                        {service.description}
+              <div className="grid gap-2">
+                {filteredServices.map((service: Service) => (
+                  <Button
+                    key={service._id}
+                    className={`py-10 px-4 bg-gray-900 text-foreground rounded-md border border-border hover:bg-accent hover:text-accent-foreground flex ${
+                      selectedService === service._id
+                        ? "bg-gray-500 text-accent-foreground hover:bg-gray-500"
+                        : ""
+                    }`}
+                    onClick={() => setSelectedService(service._id)}
+                  >
+                    <div className="w-full flex flex-col gap-2 items-start">
+                      <div className="flex flex-col items-start">
+                        <div className="text-md">{service.name}</div>
+                        <div className="text-[10px] font-light truncate">
+                          {service.description}
+                        </div>
+                      </div>
+                      <div className="flex justify-between items-center w-full">
+                        <div className="flex gap-2 text-[16px] items-center">
+                          <Euro size={16} /> {service.price}
+                        </div>
+                        <div className="flex gap-2 text-[14px] items-center">
+                          <Hourglass size={14} /> {service.duration} min
+                        </div>
                       </div>
                     </div>
-                    <div className="flex justify-between items-center w-full">
-                      <div className="flex gap-2 text-[16px] items-center">
-                        <Euro size={16} /> {service.price}
-                      </div>
-                      <div className="flex gap-2 text-[14px] items-center">
-                        <Hourglass size={14} /> {service.duration} min
-                      </div>
-                    </div>
-                  </div>
-                </Button>
-              ))}
-            </div>
+                  </Button>
+                ))}
+              </div>
             </ScrollArea>
             <Button
               className="mt-10 w-full bg-primary text-primary-foreground hover:bg-primary/90"
@@ -406,7 +407,7 @@ const AppointmentForm = () => {
       {step === 3 && (
         <Card className="bg-black text-card-foreground border-none">
           <CardHeader className="items-center">
-          <CardTitle className="flex flex-col gap-4 text-foreground ">
+            <CardTitle className="flex flex-col gap-4 text-foreground ">
               <p className="text-lg font-medium leading-tight">
                 Agora escolha um dos profissionais disponíveis.
               </p>
@@ -451,82 +452,81 @@ const AppointmentForm = () => {
       {step === 4 && (
         <Card className="bg-black text-card-foreground border-none">
           <CardHeader>
-          <CardTitle className="flex flex-col gap-4 text-foreground ">
+            <CardTitle className="flex flex-col gap-4 text-foreground ">
               <p className="text-lg font-medium leading-tight">
                 Escolha uma data e horário.
               </p>
               <div className="flex items-center gap-2 text-black bg-white p-2 rounded-sm">
                 <MessageCircle size={18} />
                 <span className="font-light text-[10px]">
-                  Escolha o dia e em seguida defina o horário de sua preferência.
+                  Escolha o dia e em seguida defina o horário de sua
+                  preferência.
                 </span>
               </div>
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <Popover open={open} onOpenChange={setOpen}>
-              <PopoverTrigger asChild>
-                <Button
-                  variant={"outline"}
-                  className={cn(
-                    "w-full justify-start text-left font-normal border-border",
-                    !formData.date && "text-muted-foreground"
-                  )}
-                >
-                  {formData.date ? (
-                    format(new Date(formData.date), "PPP", { locale: pt })
-                  ) : (
-                    <span>Selecione uma data</span>
-                  )}
-                  <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
-                </Button>
-              </PopoverTrigger>
-              <PopoverContent
-                className="w-auto p-0 bg-popover text-popover-foreground border-border"
-                align="center"
-              >
-                <Calendar
-                  mode="single"
-                  selected={formData.date ? new Date(formData.date) : undefined}
-                  onSelect={(selectedDate) => {
-                    if (selectedDate) {
-                      const formattedDate = format(selectedDate, "yyyy-MM-dd");
-                      setFormData({ ...formData, date: formattedDate });
-                      setOpen(false);
-                    }
-                  }}
-                  disabled={(date) => date < new Date() || isDateDisabled(date)}
-                  locale={pt}
-                  initialFocus
-                  
-                />
-              </PopoverContent>
-            </Popover>
+            <div className="w-full bg-background rounded-md p-1 border border-border">
+              <Calendar
+                mode="single"
+                selected={formData.date ? new Date(formData.date) : undefined}
+                onSelect={(selectedDate) => {
+                  if (selectedDate) {
+                    const formattedDate = format(selectedDate, "yyyy-MM-dd");
+                    setFormData({ ...formData, date: formattedDate });
+                  }
+                }}
+                disabled={(date) => date < new Date() || isDateDisabled(date)}
+                locale={pt}
+                className="w-full"
+              />
+            </div>
 
             {formData.date && (
-              <div className="grid grid-cols-3 gap-3 mt-4">
-                {availableTimes.length > 0 ? (
-                  availableTimes.map((time) => (
-                    <Button
-                      key={time}
-                      variant="outline"
-                      className={`text-foreground border-border hover:bg-accent hover:text-accent-foreground ${
-                        selectedTime === time
-                          ? "bg-accent text-accent-foreground"
-                          : ""
-                      }`}
-                      onClick={() => setSelectedTime(time)}
-                    >
-                      {time}
-                    </Button>
-                  ))
-                ) : (
-                  <p className="col-span-3 text-sm text-muted-foreground">
-                    Nenhum horário disponível para esta data.
-                  </p>
-                )}
+              <div className="relative mt-6">
+                <div
+                  ref={timeScrollRef}
+                  className="flex gap-3 overflow-x-auto"
+                >
+                  {availableTimes.length > 0 ? (
+                    availableTimes.map((time) => (
+                      <Button
+                        key={time}
+                        variant="outline"
+                        className={` bg-gray-900 text-foreground border-border hover:bg-accent hover:text-accent-foreground ${
+                          selectedTime === time
+                            ? "bg-gray-500 text-accent-foreground hover:bg-gray-500"
+                            : ""
+                        }`}
+                        onClick={() => setSelectedTime(time)}
+                      >
+                        {time}
+                      </Button>
+                    ))
+                  ) : (
+                    <p className="text-sm text-muted-foreground">
+                      Nenhum horário disponível para esta data.
+                    </p>
+                  )}
+                </div>
+                <div className="flex justify-between pt-4">
+                  <Button
+                    onClick={scrollLeft}
+                    className=" bg-white p-2 rounded-md shadow hover:bg-gray-100"
+                    aria-label="Scroll Left"
+                  >
+                    <ChevronLeft />
+                  </Button>
+
+                  <Button
+                    onClick={scrollRight}
+                    className=" bg-white p-2 rounded-md shadow hover:bg-gray-100"
+                    aria-label="Scroll Right"
+                  >
+                    <ChevronRight/>
+                  </Button>
+                </div>
               </div>
-              
             )}
             <Button
               className="mt-10 w-full bg-primary text-primary-foreground hover:bg-primary/90"
@@ -550,22 +550,22 @@ const AppointmentForm = () => {
       {step === 5 && (
         <Card className="bg-black text-card-foreground border-none">
           <CardHeader>
-          <CardTitle className="flex flex-col gap-4 text-foreground ">
+            <CardTitle className="flex flex-col gap-4 text-foreground ">
               <p className="text-lg font-medium leading-tight">
                 Preencha com seus dados para confirmar a sua marcação
               </p>
               <div className="flex items-center gap-2 text-black bg-white p-2 rounded-sm">
                 <MessageCircle size={18} />
                 <span className="font-light text-[10px]">
-                  Os seus dados são importantes para confirmar a marcação e também para notificações caso seja necessário.
+                  Os seus dados são importantes para confirmar a marcação e
+                  também para notificações caso seja necessário.
                 </span>
               </div>
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="space-y-4">
-
-              <div>
+            <div className="space-y-6">
+              <div className="space-y-2">
                 <Label className="text-foreground">Nome Completo*</Label>
                 <Input
                   type="text"
@@ -581,8 +581,7 @@ const AppointmentForm = () => {
                   </p>
                 )}
               </div>
-
-              <div>
+              <div className="space-y-2">
                 <Label className="text-foreground">Email*</Label>
                 <Input
                   type="email"
@@ -598,8 +597,7 @@ const AppointmentForm = () => {
                   </p>
                 )}
               </div>
-
-              <div>
+              <div className="space-y-2">
                 <Label className="text-foreground">Telefone*</Label>
                 <Input
                   type="text"
@@ -681,10 +679,9 @@ const AppointmentForm = () => {
             <p className="text-sm text-muted-foreground">
               *Não comparecimento sem aviso prévio de 24 horas ou atrasos
               superiores a 15 minutos será cobrado 30% do valor do procedimento
-              que faltou para conseguir remarcar novamente.{" "}
+              que faltou para conseguir remarcar novamente.
             </p>
           </CardFooter>
-          
         </Card>
       )}
     </div>

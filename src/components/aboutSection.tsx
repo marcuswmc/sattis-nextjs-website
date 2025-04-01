@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import SwiperSlider from "./swiperSlider";
 
 export default function AboutSection() {
@@ -15,10 +16,11 @@ export default function AboutSection() {
             para refletir a sua identidade única.
           </p>
         </div>
-
       </div>
       <div className="pt-20 pl-8 md:pl-16">
-        <SwiperSlider />
+        <Suspense fallback={<div>Carregando...</div>}>
+          <SwiperSlider />
+        </Suspense>
       </div>
     </section>
   );

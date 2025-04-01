@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import Image from "next/image";
 
@@ -6,7 +6,7 @@ import esteticaSectionImg from "@/data/imgs/img-section-03.jpg";
 import checkIc from "@/data/icons/check-ic.svg";
 import { Button } from "./ui/button";
 import { Calendar } from "lucide-react";
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import FormModal from "./formModal";
 
 export default function EsteticaSection() {
@@ -69,8 +69,9 @@ export default function EsteticaSection() {
           </Button>
         </div>
       </div>
-
-      <FormModal isOpen={showForm} onClose={() => setShowForm(false)} />
+      <Suspense fallback={<div>Carregando...</div>}>
+        <FormModal isOpen={showForm} onClose={() => setShowForm(false)} />
+      </Suspense>
     </section>
   );
 }

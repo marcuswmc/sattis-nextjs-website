@@ -3,6 +3,7 @@ import { Bricolage_Grotesque } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/header/header";
 import { AppointmentsProvider } from "@/hooks/appointments-context";
+import { Suspense } from "react";
 
 
 const bricolageFont = Bricolage_Grotesque({
@@ -25,10 +26,12 @@ export default function RootLayout({
       <body
         className={`${bricolageFont.variable} antialiased`}
       >
+        <Suspense fallback={<div>Loading...</div>}>
         <AppointmentsProvider>
         <Header/>
         {children}
         </AppointmentsProvider>
+        </Suspense>
       </body>
     </html>
   );

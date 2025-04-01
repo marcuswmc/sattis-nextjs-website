@@ -1,12 +1,12 @@
-'use client'
+"use client";
 
 import Image from "next/image";
 
 import barberSectionImg from "@/data/imgs/img-section-01.jpg";
 import checkIc from "@/data/icons/check-ic.svg";
 import { Button } from "./ui/button";
-import { Calendar } from "lucide-react";
-import { useState } from "react";
+import { Calendar, Divide } from "lucide-react";
+import { Suspense, useState } from "react";
 import FormModal from "./formModal";
 
 export default function BarberSection() {
@@ -69,7 +69,9 @@ export default function BarberSection() {
           </Button>
         </div>
       </div>
-      <FormModal isOpen={showForm} onClose={() => setShowForm(false)} />
+      <Suspense fallback={<div>Carregando...</div>}>
+        <FormModal isOpen={showForm} onClose={() => setShowForm(false)} />
+      </Suspense>
     </section>
   );
 }

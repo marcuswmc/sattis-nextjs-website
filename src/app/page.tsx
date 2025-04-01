@@ -5,12 +5,15 @@ import Footer from "@/components/footer";
 import Hero from "@/components/hero";
 import PiercingSection from "@/components/piercingSection";
 import TattooSection from "@/components/tattooSection";
+import { Suspense } from "react";
 
 export default function Home() {
   return (
     <main>
       <div id="inicio" className="scroll-mt-5">
-        <Hero />
+        <Suspense>
+          <Hero />
+        </Suspense>
       </div>
       <div id="studio" className="scroll-mt-5">
         <AboutSection />
@@ -38,7 +41,9 @@ export default function Home() {
         </h3>
       </div>
       <div id="estetica" className="scroll-mt-5">
-        <EsteticaSection />
+        <Suspense fallback={<div>Carregando...</div>}>
+          <EsteticaSection />
+        </Suspense>
       </div>
       <div className="py-28 px-8 md:px-16 text-right">
         <h3 className="text-4xl">

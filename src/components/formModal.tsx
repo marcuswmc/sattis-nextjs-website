@@ -5,7 +5,7 @@ import AppointmentForm from "./appointmentForm/AppointmentForm";
 import Image from "next/image";
 import imgBg from "@/data/imgs/bg-hero.jpg";
 import { Button } from "./ui/button";
-import { useRef } from "react";
+import { Suspense, useRef } from "react";
 
 interface ModalProps {
   isOpen: boolean;
@@ -24,30 +24,28 @@ export default function FormModal({ isOpen, onClose }: ModalProps) {
   if (!isOpen) return null;
 
   return (
-    <div 
+    <div
       className="fixed inset-0 flex items-center justify-center bg-black/50 z-50"
       onClick={handleOutsideClick}
     >
-      <div 
+      <div
         ref={modalRef}
-        className="relative flex flex-col items-center h-[calc(100vh_-_20%)] md:h-[calc(100vh_-_10%)] bg-black rounded-lg w-full md:max-w-[600px] max-w-[450px] shadow-lg"
+        className="relative flex flex-col items-center h-auto bg-black rounded-lg w-full md:max-w-[600px] max-w-[450px] shadow-lg"
       >
-        <div className="relative w-full">
-          <Image 
-            src={imgBg} 
-            alt="Marcações" 
-            className="rounded-t-lg object-cover w-full"
-          />
+        <div className="relative w-full h-auto">
           <button
             className="absolute top-3 right-3 text-gray-600 hover:text-black"
             onClick={onClose}
           >
             <X size={24} />
           </button>
+          <Image src={imgBg} alt="Marcações" className="rounded-t-lg" />
         </div>
         <div className="p-6 w-full -mt-40 relative z-10 rounded-b-lg">
           <div className="flex justify-center">
-            <AppointmentForm />
+            <Suspense fallback={<div>Carregando...</div>}>
+              <AppointmentForm />
+            </Suspense>
           </div>
         </div>
       </div>
