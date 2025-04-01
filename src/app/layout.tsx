@@ -23,12 +23,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${bricolageFont.variable} antialiased`}>
-        <Suspense>
           <AppointmentsProvider>
             <Header />
-            {children}
+            <Suspense fallback={null}>{children}</Suspense>
           </AppointmentsProvider>
-        </Suspense>
       </body>
     </html>
   );
