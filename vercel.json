@@ -7,8 +7,5 @@
   ],
   "env": {
     "NODE_ENV": "production"
-  },
-  "scripts": {
-    "predeploy": "npm install --force"
   }
 }
