@@ -4,7 +4,6 @@ import { X } from "lucide-react";
 import AppointmentForm from "./appointmentForm/AppointmentForm";
 import Image from "next/image";
 import imgBg from "@/data/imgs/bg-hero.jpg";
-import { Button } from "./ui/button";
 import { Suspense, useRef } from "react";
 
 interface ModalProps {
@@ -43,7 +42,7 @@ export default function FormModal({ isOpen, onClose }: ModalProps) {
         </div>
         <div className="p-6 w-full -mt-40 relative z-10 rounded-b-lg">
           <div className="flex justify-center">
-            <Suspense fallback={<div>Carregando...</div>}>
+            <Suspense fallback={null}>
               <AppointmentForm />
             </Suspense>
           </div>

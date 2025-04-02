@@ -69,7 +69,7 @@ export default function EsteticaSection() {
           </Button>
         </div>
       </div>
-      <Suspense fallback={<div>Carregando...</div>}>
+      <Suspense fallback={null}>
         <FormModal isOpen={showForm} onClose={() => setShowForm(false)} />
       </Suspense>
     </section>

@@ -1,3 +1,5 @@
+"use client"
+
 import Image from "next/image";
 
 import piercingSectionImg from "@/data/imgs/img-section-04.jpg";

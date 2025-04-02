@@ -1,3 +1,5 @@
+"use client"
+
 import Image from "next/image";
 
 import tattooSectionImg from "@/data/imgs/img-section-02.jpg";
