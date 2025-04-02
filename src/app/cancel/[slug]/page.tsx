@@ -1,41 +1,53 @@
-"use client";
+'use client'
+
+export const dynamic = "force-dynamic";
 
 import { useEffect, useState } from "react";
-import { useParams, useRouter } from "next/navigation";
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { useParams} from "next/navigation";
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
+import Link from "next/link";
 
 const CancelAppointment = () => {
-
   const { slug } = useParams();
-  const router = useRouter();
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     if (!slug) {
-      console.error('Slug não encontrado');
-    } else {
-      console.log('Slug carregado:', slug);
+      console.error("Slug não encontrado");
+      return;
     }
+    console.log("Slug carregado:", slug);
   }, [slug]);
 
   const handleCancelConfirm = async () => {
     setLoading(true);
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/appointment/cancel/confirm/${slug}`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-      });
-      if (response.ok) {
-        toast("Marcação cancelada com sucesso!");
-        router.push("/");
-      } else {
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/appointment/cancel/confirm/${slug}`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+        }
+      );
+
+      if (!response.ok) {
         toast("Erro ao cancelar a marcação. Tente novamente.");
+        return;   
       }
+      toast("Marcação cancelada com sucesso!");
+
     } catch (error) {
       console.error(error);
       toast("Erro ao cancelar a marcação. Tente novamente.");
+      return;
     } finally {
       setLoading(false);
     }
@@ -51,21 +63,27 @@ const CancelAppointment = () => {
         </CardHeader>
         <CardContent>
           <p className="text-center">
-            Tens certeza de que deseja cancelar sua marcação? Esta ação não poderá ser desfeita.
+            Tens certeza de que deseja cancelar sua marcação? Esta ação não
+            poderá ser desfeita.
           </p>
         </CardContent>
         <CardFooter className="flex flex-col gap-4 mt-4">
-          <Button onClick={handleCancelConfirm} disabled={loading} className="cursor-pointer">
+          <Button
+            onClick={handleCancelConfirm}
+            disabled={loading}
+            className="cursor-pointer"
+          >
             {loading ? "Cancelando..." : "Confirmar Cancelamento"}
           </Button>
-          <Button variant="ghost" onClick={() => router.back()}>
+          <Link href="/">
+          <Button variant="ghost">
             Voltar
           </Button>
+          </Link>
         </CardFooter>
       </Card>
     </div>
   );
 };
-
 
 export default CancelAppointment;
