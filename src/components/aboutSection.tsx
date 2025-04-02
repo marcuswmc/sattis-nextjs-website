@@ -18,7 +18,7 @@ export default function AboutSection() {
         </div>
       </div>
       <div className="pt-20 pl-8 md:pl-16">
-        <Suspense fallback={<div>Carregando...</div>}>
+        <Suspense fallback={null}>
           <SwiperSlider />
         </Suspense>
       </div>

@@ -12,12 +12,12 @@ export default function Header() {
         <Image src={logo} alt="Sattis studio" width={100} />
       </div>
       <div className="font-bold hidden md:flex">
-        <Suspense>
+        <Suspense fallback={null}>
           <DesktopNav />
         </Suspense>
       </div>
       <div className="font-bold flex md:hidden">
-        <Suspense>
+        <Suspense fallback={null}>
           <MobileNav />
         </Suspense>
       </div>
