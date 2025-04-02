@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -12,6 +12,13 @@ const CancelAppointment = () => {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
 
+  useEffect(() => {
+    if (!slug) {
+      console.error('Slug não encontrado');
+    } else {
+      console.log('Slug carregado:', slug);
+    }
+  }, [slug]);
 
   const handleCancelConfirm = async () => {
     setLoading(true);
@@ -22,7 +29,6 @@ const CancelAppointment = () => {
       });
       if (response.ok) {
         toast("Marcação cancelada com sucesso!");
-        // Redireciona o usuário, por exemplo, para a página inicial
         router.push("/");
       } else {
         toast("Erro ao cancelar a marcação. Tente novamente.");
@@ -49,7 +55,7 @@ const CancelAppointment = () => {
           </p>
         </CardContent>
         <CardFooter className="flex flex-col gap-4 mt-4">
-          <Button onClick={handleCancelConfirm} disabled={loading}>
+          <Button onClick={handleCancelConfirm} disabled={loading} className="cursor-pointer">
             {loading ? "Cancelando..." : "Confirmar Cancelamento"}
           </Button>
           <Button variant="ghost" onClick={() => router.back()}>
@@ -60,5 +66,6 @@ const CancelAppointment = () => {
     </div>
   );
 };
+
 
 export default CancelAppointment;

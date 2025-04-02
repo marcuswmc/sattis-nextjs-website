@@ -1,25 +1,15 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import { Button } from "./ui/button";
 import { Calendar, X } from "lucide-react";
 import FormModal from "./formModal";
 
 export default function Hero() {
   const [showForm, setShowForm] = useState(false);
-  const videoRef = useRef<HTMLVideoElement>(null);
-
-  useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.muted = true;
-      videoRef.current.play(); 
-    }
-  }, []);
-
   return (
     <section className="relative h-[700px] md:h-screen flex flex-col items-end justify-end pb-20 px-8 md:px-16 w-full">
       <video
-        ref={videoRef}
         autoPlay
         loop
         muted

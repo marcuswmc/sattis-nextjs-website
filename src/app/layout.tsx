@@ -2,8 +2,6 @@ import type { Metadata } from "next";
 import { Bricolage_Grotesque } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/header/header";
-import { Suspense } from "react";
-import { SearchParamsProvider } from "@/hooks/searchParamsProvider";
 import AppointmentsProviderWrapper from "@/hooks/appointmentsProviderWrapper";
 
 const bricolageFont = Bricolage_Grotesque({
@@ -24,12 +22,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${bricolageFont.variable} antialiased`}>
-        <Suspense fallback={null}>
-          <AppointmentsProviderWrapper>
-            <Header />
-            <SearchParamsProvider>{children}</SearchParamsProvider>
-          </AppointmentsProviderWrapper>
-        </Suspense>
+        <AppointmentsProviderWrapper>
+          <Header />
+          {children}
+        </AppointmentsProviderWrapper>
       </body>
     </html>
   );
