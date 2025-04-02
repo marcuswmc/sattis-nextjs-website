@@ -31,7 +31,6 @@ import {
 } from "lucide-react";
 import { ScrollArea } from "../ui/scroll-area";
 import { motion, AnimatePresence } from "framer-motion";
-import Link from "next/link";
 
 interface Category {
   _id: string;
@@ -96,6 +95,8 @@ const AppointmentForm = () => {
   }>({});
   const [loading, setLoading] = useState(false);
 
+  const [loadingTimes, setLoadingTimes] = useState(false);
+
   const timeScrollRef = useRef<HTMLDivElement>(null);
 
   const scrollLeft = () => {
@@ -143,6 +144,7 @@ const AppointmentForm = () => {
   useEffect(() => {
     if (selectedService && formData.date && selectedProfessional) {
       const fetchAvailableTimes = async () => {
+        setLoadingTimes(true);
         try {
           const response = await fetch(
             `${process.env.NEXT_PUBLIC_API_URL}/services/available?date=${formData.date}`
@@ -176,6 +178,8 @@ const AppointmentForm = () => {
         } catch (error) {
           console.error(error);
           setAvailableTimes([]);
+        } finally {
+          setLoadingTimes(false);
         }
       };
 
@@ -309,8 +313,9 @@ const AppointmentForm = () => {
                   <div className="flex items-center gap-2 text-black bg-white p-2 rounded-sm">
                     <MessageCircle size={18} />
                     <span className="font-light text-[10px]">
-                      * Ao clicar em <span className="font-bold">tattoo</span> ou{" "}
-                      <span className="font-bold">piercing</span> será redirecionado
+                      * Ao clicar em <span className="font-bold">tattoo</span>{" "}
+                      ou <span className="font-bold">piercing</span> será
+                      redirecionado
                       <br />
                       para o atendimento via whatsapp.
                     </span>
@@ -504,7 +509,8 @@ const AppointmentForm = () => {
                   <div className="flex items-center gap-2 text-black bg-white p-2 rounded-sm">
                     <MessageCircle size={18} />
                     <span className="font-light text-[10px]">
-                      Escolha o dia e em seguida defina o horário de sua preferência.
+                      Escolha o dia e em seguida defina o horário de sua
+                      preferência.
                     </span>
                   </div>
                 </CardTitle>
@@ -513,14 +519,21 @@ const AppointmentForm = () => {
                 <div className="w-full bg-background rounded-md p-1 border border-border">
                   <Calendar
                     mode="single"
-                    selected={formData.date ? new Date(formData.date) : undefined}
+                    selected={
+                      formData.date ? new Date(formData.date) : undefined
+                    }
                     onSelect={(selectedDate) => {
                       if (selectedDate) {
-                        const formattedDate = format(selectedDate, "yyyy-MM-dd");
+                        const formattedDate = format(
+                          selectedDate,
+                          "yyyy-MM-dd"
+                        );
                         setFormData({ ...formData, date: formattedDate });
                       }
                     }}
-                    disabled={(date) => date < new Date() || isDateDisabled(date)}
+                    disabled={(date) =>
+                      date < new Date() || isDateDisabled(date)
+                    }
                     locale={pt}
                     className="w-full"
                   />
@@ -528,8 +541,18 @@ const AppointmentForm = () => {
 
                 {formData.date && (
                   <div className="relative mt-6">
-                    <div ref={timeScrollRef} className="flex gap-3 overflow-x-auto">
-                      {availableTimes.length > 0 ? (
+                    <div
+                      ref={timeScrollRef}
+                      className="flex gap-3 overflow-x-auto"
+                    >
+                      {loadingTimes ? (
+                        Array.from({ length: 5 }).map((_, index) => (
+                          <div
+                            key={index}
+                            className="w-24 h-10 bg-gray-900 rounded animate-pulse"
+                          />
+                        ))
+                      ) : availableTimes.length > 0 ? (
                         availableTimes.map((time) => (
                           <Button
                             key={time}
@@ -558,7 +581,6 @@ const AppointmentForm = () => {
                       >
                         <ChevronLeft />
                       </Button>
-
                       <Button
                         onClick={scrollRight}
                         className=" bg-white p-2 rounded-md shadow hover:bg-gray-100"
@@ -569,6 +591,7 @@ const AppointmentForm = () => {
                     </div>
                   </div>
                 )}
+
                 <Button
                   className="mt-10 w-full bg-primary text-primary-foreground hover:bg-primary/90"
                   onClick={handleNextStep}
@@ -607,7 +630,8 @@ const AppointmentForm = () => {
                   <div className="flex items-center gap-2 text-black bg-white p-2 rounded-sm">
                     <MessageCircle size={18} />
                     <span className="font-light text-[10px]">
-                      Os seus dados são importantes para confirmar a marcação e também para notificações caso seja necessário.
+                      Os seus dados são importantes para confirmar a marcação e
+                      também para notificações caso seja necessário.
                     </span>
                   </div>
                 </CardTitle>
@@ -620,7 +644,10 @@ const AppointmentForm = () => {
                       type="text"
                       value={formData.customerName}
                       onChange={(e) =>
-                        setFormData({ ...formData, customerName: e.target.value })
+                        setFormData({
+                          ...formData,
+                          customerName: e.target.value,
+                        })
                       }
                       className="bg-background text-foreground border-border focus:border-primary"
                     />
@@ -636,7 +663,10 @@ const AppointmentForm = () => {
                       type="email"
                       value={formData.customerEmail}
                       onChange={(e) =>
-                        setFormData({ ...formData, customerEmail: e.target.value })
+                        setFormData({
+                          ...formData,
+                          customerEmail: e.target.value,
+                        })
                       }
                       className="bg-background text-foreground border-border focus:border-primary"
                     />
@@ -652,7 +682,10 @@ const AppointmentForm = () => {
                       type="text"
                       value={formData.customerPhone}
                       onChange={(e) =>
-                        setFormData({ ...formData, customerPhone: e.target.value })
+                        setFormData({
+                          ...formData,
+                          customerPhone: e.target.value,
+                        })
                       }
                       className="bg-background text-foreground border-border focus:border-primary"
                     />
@@ -715,7 +748,10 @@ const AppointmentForm = () => {
                 </p>
                 <p className="text-sm text-foreground">
                   <strong>Profissional:</strong>{" "}
-                  {professionals.find((p) => p._id === selectedProfessional)?.name}
+                  {
+                    professionals.find((p) => p._id === selectedProfessional)
+                      ?.name
+                  }
                 </p>
                 <p className="text-sm text-foreground">
                   <strong>Data:</strong> {formData.date}
@@ -736,8 +772,8 @@ const AppointmentForm = () => {
               <CardFooter className="flex flex-col">
                 <p className="text-sm text-muted-foreground">
                   *Não comparecimento sem aviso prévio de 24 horas ou atrasos
-                  superiores a 15 minutos será cobrado 30% do valor do procedimento
-                  que faltou para conseguir remarcar novamente.
+                  superiores a 15 minutos será cobrado 30% do valor do
+                  procedimento que faltou para conseguir remarcar novamente.
                 </p>
               </CardFooter>
             </Card>
