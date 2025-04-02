@@ -3,7 +3,7 @@
 export const dynamic = "force-dynamic";
 
 import { useEffect, useState } from "react";
-import { useParams} from "next/navigation";
+import { useParams, useRouter} from "next/navigation";
 import {
   Card,
   CardContent,
@@ -29,6 +29,8 @@ const CancelAppointment = () => {
 
   const handleCancelConfirm = async () => {
     setLoading(true);
+    const router = useRouter();
+
     try {
       const response = await fetch(
         `${process.env.NEXT_PUBLIC_API_URL}/appointment/cancel/confirm/${slug}`,
@@ -43,6 +45,9 @@ const CancelAppointment = () => {
         return;   
       }
       toast("Marcação cancelada com sucesso!");
+      setTimeout(() => {
+        router.push("/")
+      }, 2000)
 
     } catch (error) {
       console.error(error);

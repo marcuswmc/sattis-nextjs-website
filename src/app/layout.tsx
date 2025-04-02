@@ -4,6 +4,8 @@ import "./globals.css";
 import Header from "@/components/header/header";
 import AppointmentsProviderWrapper from "@/hooks/appointmentsProviderWrapper";
 
+import { Toaster } from "sonner";
+
 const bricolageFont = Bricolage_Grotesque({
   variable: "--font-bricolage",
   subsets: ["latin"],
@@ -25,6 +27,7 @@ export default function RootLayout({
         <AppointmentsProviderWrapper>
           <Header />
           {children}
+          <Toaster />
         </AppointmentsProviderWrapper>
       </body>
     </html>
