@@ -69,6 +69,7 @@ export default function PiercingSection() {
 
         <motion.div variants={itemVariantsRight} className="flex gap-5">
           <Button
+          asChild
             variant="outline"
             className="mt-5 text-md border-black text-black cursor-pointer"
           >
@@ -77,6 +78,7 @@ export default function PiercingSection() {
             </Link>
           </Button>
           <Button
+          asChild
             variant="link"
             className="mt-5 text-md border-black text-black cursor-pointer"
           >

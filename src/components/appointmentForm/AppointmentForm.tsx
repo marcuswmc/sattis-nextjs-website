@@ -28,9 +28,11 @@ import {
   Hourglass,
   Loader2,
   MessageCircle,
+  Target,
 } from "lucide-react";
 import { ScrollArea } from "../ui/scroll-area";
 import { motion, AnimatePresence } from "framer-motion";
+import Link from "next/link";
 
 interface Category {
   _id: string;
@@ -76,7 +78,7 @@ const AppointmentForm = () => {
 
   const [categories, setCategories] = useState<Category[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string>("");
-  const [loadingCategories, setLoadingCategories] = useState(false)
+  const [loadingCategories, setLoadingCategories] = useState(false);
   const [step, setStep] = useState(1);
   const [selectedService, setSelectedService] = useState<string>("");
   const [availableProfessionals, setAvailableProfessionals] = useState<
@@ -110,7 +112,7 @@ const AppointmentForm = () => {
 
   useEffect(() => {
     const fetchCategories = async () => {
-      setLoadingCategories(true)
+      setLoadingCategories(true);
       try {
         const response = await fetch(
           `https://services-appointment-api.onrender.com/api/categories`
@@ -123,7 +125,7 @@ const AppointmentForm = () => {
         console.error("Erro ao buscar categorias:", error);
         toast("Erro ao carregar categorias");
       } finally {
-        setLoadingCategories(false)
+        setLoadingCategories(false);
       }
     };
 
@@ -329,44 +331,51 @@ const AppointmentForm = () => {
               <CardContent>
                 <div className="grid grid-cols-2 gap-2">
                   {loadingCategories ? (
-                   Array.from({ length: 2 }).map((_, index) => (
-                    <div
-                      key={index}
-                      className="w-full h-10 bg-gray-900 rounded animate-pulse"
-                    />
-                  ))
-                ) : categories.length > 0 ? (
-                  categories.map((category: Category) => (
-                    <Button
-                      key={category._id}
-                      variant="outline"
-                      className={`text-foreground bg-gray-900 border-border hover:bg-accent hover:text-accent-foreground ${
-                        selectedCategory === category._id
-                          ? "bg-gray-500 text-accent-foreground hover:bg-gray-500"
-                          : ""
-                      }`}
-                      onClick={() => setSelectedCategory(category._id)}
-                    >
-                      {category.name}
-                    </Button>
-                  ))) : (
+                    Array.from({ length: 2 }).map((_, index) => (
+                      <div
+                        key={index}
+                        className="w-full h-10 bg-gray-900 rounded animate-pulse"
+                      />
+                    ))
+                  ) : categories.length > 0 ? (
+                    categories.map((category: Category) => (
+                      <Button
+                        key={category._id}
+                        variant="outline"
+                        className={`text-foreground bg-gray-900 border-border hover:bg-accent hover:text-accent-foreground cursor-pointer ${
+                          selectedCategory === category._id
+                            ? "bg-gray-500 text-accent-foreground hover:bg-gray-500"
+                            : ""
+                        }`}
+                        onClick={() => setSelectedCategory(category._id)}
+                      >
+                        {category.name}
+                      </Button>
+                    ))
+                  ) : (
                     <p className="text-sm text-muted-foreground">
-                          Nenhuma área disponível para esta data.
+                      Nenhuma área disponível para esta data.
                     </p>
                   )}
                   <div className="col-span-2"></div>
 
                   <Button
+                    asChild
                     variant="outline"
                     className="text-foreground border-border bg-gray-900 hover:bg-accent hover:text-accent-foreground grid"
                   >
-                    Tattoo
+                    <Link href={"https://wa.me/351914668874"} target="_blank">
+                      Tattoo
+                    </Link>
                   </Button>
                   <Button
+                    asChild
                     variant="outline"
                     className="text-foreground border-border bg-gray-900 hover:bg-accent hover:text-accent-foreground"
                   >
-                    Piercing
+                    <Link href={"https://wa.me/351913534380"} target="_blank">
+                      Piercing
+                    </Link>
                   </Button>
                 </div>
 

@@ -75,6 +75,7 @@ export default function TattooSection() {
             </Link>
           </Button>
           <Button
+          asChild
             variant="link"
             className="mt-5 text-md border-black text-black cursor-pointer"
           >
