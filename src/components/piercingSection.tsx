@@ -6,6 +6,7 @@ import { MessageCircle, Instagram } from "lucide-react";
 import { delay, motion } from "framer-motion";
 
 import piercingSectionImg from "@/data/imgs/img-section-04.jpg";
+import Link from "next/link";
 
 const containerVariants = {
   hidden: {},
@@ -71,13 +72,20 @@ export default function PiercingSection() {
             variant="outline"
             className="mt-5 text-md border-black text-black cursor-pointer"
           >
-            Orçamentos <MessageCircle />
+            <Link href={"https://wa.me/351913534380"} target="_blank">
+              Orçamentos <MessageCircle />
+            </Link>
           </Button>
           <Button
             variant="link"
             className="mt-5 text-md border-black text-black cursor-pointer"
           >
-            Instagram <Instagram />
+            <Link
+              href={"https://www.instagram.com/s4ttis/"}
+              target="_blank"
+            >
+              Instagram <Instagram />
+            </Link>
           </Button>
         </motion.div>
       </motion.div>
