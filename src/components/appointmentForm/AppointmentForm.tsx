@@ -76,6 +76,7 @@ const AppointmentForm = () => {
 
   const [categories, setCategories] = useState<Category[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string>("");
+  const [loadingCategories, setLoadingCategories] = useState(false)
   const [step, setStep] = useState(1);
   const [selectedService, setSelectedService] = useState<string>("");
   const [availableProfessionals, setAvailableProfessionals] = useState<
@@ -109,6 +110,7 @@ const AppointmentForm = () => {
 
   useEffect(() => {
     const fetchCategories = async () => {
+      setLoadingCategories(true)
       try {
         const response = await fetch(
           `https://services-appointment-api.onrender.com/api/categories`
@@ -120,6 +122,8 @@ const AppointmentForm = () => {
       } catch (error) {
         console.error("Erro ao buscar categorias:", error);
         toast("Erro ao carregar categorias");
+      } finally {
+        setLoadingCategories(false)
       }
     };
 
@@ -324,7 +328,15 @@ const AppointmentForm = () => {
               </CardHeader>
               <CardContent>
                 <div className="grid grid-cols-2 gap-2">
-                  {categories.map((category: Category) => (
+                  {loadingCategories ? (
+                   Array.from({ length: 2 }).map((_, index) => (
+                    <div
+                      key={index}
+                      className="w-full h-10 bg-gray-900 rounded animate-pulse"
+                    />
+                  ))
+                ) : categories.length > 0 ? (
+                  categories.map((category: Category) => (
                     <Button
                       key={category._id}
                       variant="outline"
@@ -337,7 +349,11 @@ const AppointmentForm = () => {
                     >
                       {category.name}
                     </Button>
-                  ))}
+                  ))) : (
+                    <p className="text-sm text-muted-foreground">
+                          Nenhuma área disponível para esta data.
+                    </p>
+                  )}
                   <div className="col-span-2"></div>
 
                   <Button

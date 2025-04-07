@@ -17,7 +17,7 @@ const textVariant = {
 
 export default function Home() {
   return (
-    <main>
+    <main className="overflow-hidden">
       <div id="inicio" className="scroll-mt-5">
         <Suspense fallback={null}>
           <Hero />
