@@ -79,7 +79,7 @@ const AppointmentForm = () => {
   const [categories, setCategories] = useState<Category[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string>("");
   const [loadingCategories, setLoadingCategories] = useState(false);
-  const [step, setStep] = useState(1);
+  const [step, setStep] = useState(6);
   const [selectedService, setSelectedService] = useState<string>("");
   const [availableProfessionals, setAvailableProfessionals] = useState<
     Professional[]
@@ -794,11 +794,17 @@ const AppointmentForm = () => {
                   <strong>Telefone:</strong> {formData.customerPhone}
                 </p>
               </CardContent>
-              <CardFooter className="flex flex-col">
+              <CardFooter className="flex flex-col gap-2 items-start">
+                <p className="text-sm text-white">
+                  *O pagamento deverá ser realizado em dinheiro.
+                </p>
                 <p className="text-sm text-muted-foreground">
                   *Não comparecimento sem aviso prévio de 24 horas ou atrasos
                   superiores a 15 minutos será cobrado 30% do valor do
                   procedimento que faltou para conseguir remarcar novamente.
+                </p>
+                <p className="text-sm text-muted-foreground">
+                  Para mais informações ou dúvidas, estamos à disposição!
                 </p>
               </CardFooter>
             </Card>
