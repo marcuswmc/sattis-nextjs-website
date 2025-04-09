@@ -79,7 +79,7 @@ const AppointmentForm = () => {
   const [categories, setCategories] = useState<Category[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string>("");
   const [loadingCategories, setLoadingCategories] = useState(false);
-  const [step, setStep] = useState(6);
+  const [step, setStep] = useState(1);
   const [selectedService, setSelectedService] = useState<string>("");
   const [availableProfessionals, setAvailableProfessionals] = useState<
     Professional[]
