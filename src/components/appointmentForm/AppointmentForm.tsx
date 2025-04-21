@@ -415,7 +415,7 @@ const AppointmentForm = () => {
                     {filteredServices.map((service: Service) => (
                       <Button
                         key={service._id}
-                        className={`py-10 px-4 bg-gray-900 text-foreground rounded-md border border-border hover:bg-accent hover:text-accent-foreground flex ${
+                        className={`py-16 px-4 bg-gray-900 text-foreground rounded-md border border-border hover:bg-accent hover:text-accent-foreground ${
                           selectedService === service._id
                             ? "bg-gray-500 text-accent-foreground hover:bg-gray-500"
                             : ""
@@ -423,10 +423,10 @@ const AppointmentForm = () => {
                         onClick={() => setSelectedService(service._id)}
                       >
                         <div className="w-full flex flex-col gap-2 items-start">
-                          <div className="flex flex-col items-start">
+                          <div className="flex flex-col items-start gap-2">
                             <div className="text-md">{service.name}</div>
-                            <div className="text-[10px] font-light truncate">
-                              {service.description}
+                            <div className="text-[10px] font-light">
+                              <p className="text-wrap text-start">{service.description}</p>
                             </div>
                           </div>
                           <div className="flex justify-between items-center w-full">
