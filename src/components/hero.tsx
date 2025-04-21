@@ -13,7 +13,9 @@ export default function Hero() {
   useEffect(() => {
     if(videoRef.current){
       videoRef.current.muted = true
-      videoRef.current.play().catch()
+      videoRef.current.play().catch(error => {
+        console.log("Erro ao iniciar vídeo automaticamente:", error);
+      })
     }
   }, [])
 
