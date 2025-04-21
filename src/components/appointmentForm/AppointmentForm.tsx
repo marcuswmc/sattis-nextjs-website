@@ -426,7 +426,7 @@ const AppointmentForm = () => {
                           <div className="flex flex-col items-start gap-2">
                             <div className="text-md">{service.name}</div>
                             <div className="text-[10px] font-light">
-                              <p className="text-wrap text-start">{service.description}</p>
+                              <p className="text-wrap text-start line-clamp-3">{service.description}</p>
                             </div>
                           </div>
                           <div className="flex justify-between items-center w-full">
