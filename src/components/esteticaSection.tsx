@@ -8,6 +8,12 @@ import { Button } from "./ui/button";
 import { Calendar } from "lucide-react";
 import FormModal from "./formModal";
 import { motion } from "framer-motion";
+import { Accordion } from "./ui/accordion";
+import {
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "./ui/accordion";
 
 const containerVariants = {
   hidden: {},
@@ -33,15 +39,17 @@ export default function EsteticaSection() {
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.3 }}
-      className="flex flex-col md:flex-row w-full gap-5"
+      className="flex flex-col md:flex-row w-full gap-5 md:items-center"
     >
       {/* Imagem */}
-      <motion.div variants={itemVariantsLeft} className="relative w-full md:w-[50%]">
+      <motion.div
+        variants={itemVariantsLeft}
+        className="relative w-full md:w-[50%]"
+      >
         <Image
           src={esteticaSectionImg}
           alt="Estética"
           quality={100}
-          className=""
         />
         <span className="absolute top-5 left-5 text-white text-6xl">
           Estética
@@ -51,9 +59,12 @@ export default function EsteticaSection() {
       {/* Conteúdo */}
       <motion.div
         variants={itemVariantsRight}
-        className="bg-gray-100 w-full md:w-[50%] flex flex-col gap-8 py-20 px-8 justify-center md:px-20 md:rounded-tl-2xl md:rounded-l-2xl"
+        className="bg-gray-100 w-full md:w-[50%] flex flex-col gap-8 py-16 px-8 justify-center md:px-20 md:rounded-tl-2xl md:rounded-l-2xl"
       >
-        <motion.div variants={itemVariantsRight} className="flex flex-col gap-5">
+        <motion.div
+          variants={itemVariantsRight}
+          className="flex flex-col gap-5"
+        >
           <h3 className="text-3xl">
             Elevamos a estética <br />
             com técnica e paixão.
@@ -64,27 +75,40 @@ export default function EsteticaSection() {
           </p>
         </motion.div>
 
-        <motion.div variants={itemVariantsRight} className="flex flex-col gap-5 justify-center">
-          <div className="flex flex-col gap-5 md:gap-0 md:flex-row md:items-center">
-            <div className="flex gap-5 items-center w-full md:w-[50%]">
-              <Image src={checkIc} alt="service-icon" />
-              <p className="uppercase">Limpeza de pele</p>
-            </div>
-            <div className="flex gap-5 items-center w-full md:w-[50%]">
-              <Image src={checkIc} alt="service-icon" />
-              <p className="uppercase">Design de sobrancelhas</p>
-            </div>
-          </div>
-          <div className="flex flex-col gap-5 md:gap-0 md:flex-row md:items-center">
-            <div className="flex gap-5 items-center w-full md:w-[50%]">
-              <Image src={checkIc} alt="service-icon" />
-              <p className="uppercase">Dermaplaning</p>
-            </div>
-            <div className="flex gap-5 items-center w-full md:w-[50%]">
-              <Image src={checkIc} alt="service-icon" />
-              <p className="uppercase">Brow lamination</p>
-            </div>
-          </div>
+        <motion.div
+          variants={itemVariantsRight}
+          className="flex flex-col gap-5 justify-center"
+        >
+          <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="limpeza-de-pele">
+              <AccordionTrigger>Limpeza de pele</AccordionTrigger>
+              <AccordionContent>
+                A limpeza de pele é um procedimento que visa higienizar
+                profundamente a pele, removendo cravos, impurezas, células
+                mortas e o excesso de oleosidade, ajudando a desobstruir os
+                poros, prevenir acne e melhorar a absorção de cosméticos,
+                promovendo uma aparência mais saudável, limpa e revitalizada.
+              </AccordionContent>
+            </AccordionItem>
+            <AccordionItem value="design-de-sobrancelhas">
+              <AccordionTrigger>Design de sobrancelhas</AccordionTrigger>
+              <AccordionContent>
+              Design de sobrancelhas é a arte de harmonizar o formato das sobrancelhas com o rosto, realçando a beleza e a expressão natural.
+              </AccordionContent>
+            </AccordionItem>
+            <AccordionItem value="dermaplaning">
+              <AccordionTrigger>Dermaplaning</AccordionTrigger>
+              <AccordionContent>
+              Dermaplaning é uma técnica de esfoliação facial com lâmina de bisturi que remove células mortas, pelos finos e impurezas da pele, deixando o rosto mais suave, renovado e com uma aparência mais luminosa e uniforme.
+              </AccordionContent>
+            </AccordionItem>
+            <AccordionItem value="brow-lamination">
+              <AccordionTrigger>Brow lamination</AccordionTrigger>
+              <AccordionContent>
+              Brow lamination é um tratamento que alinha e define os fios das sobrancelhas, proporcionando um efeito mais cheio, volumoso e duradouro.
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
         </motion.div>
 
         <motion.div variants={itemVariantsRight}>

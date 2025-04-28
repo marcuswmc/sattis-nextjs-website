@@ -795,9 +795,6 @@ const AppointmentForm = () => {
                 </p>
               </CardContent>
               <CardFooter className="flex flex-col gap-2 items-start">
-                <p className="text-sm text-white">
-                  *O pagamento deverá ser realizado em dinheiro.
-                </p>
                 <p className="text-sm text-muted-foreground">
                   *Não comparecimento sem aviso prévio de 24 horas ou atrasos
                   superiores a 15 minutos será cobrado 30% do valor do

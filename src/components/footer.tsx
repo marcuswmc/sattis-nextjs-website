@@ -28,7 +28,7 @@ export default function Footer() {
         <div className="flex flex-col gap-5">
           <div className="flex gap-3">
             <Phone size={18} />
-            <p className="text-sm">(+351) 999 888 777</p>
+            <p className="text-sm">(+351) 915 003 454</p>
           </div>
           <div className="flex gap-3">
             <Mail size={18} />
@@ -55,11 +55,17 @@ export default function Footer() {
           </Button>
         </div>
         <div className="flex space-x-5">
-          <Button variant="outline">
-            Fale Connosco
-            <MessageCircle />
-          </Button>
-          <Link href="https://www.instagram.com/s4ttis/" target="_blank" rel="noopener noreferrer">
+          <Link href={"https://wa.me/351915003454"} target="_blank">
+            <Button variant="outline">
+              Fale Connosco
+              <MessageCircle />
+            </Button>
+          </Link>
+          <Link
+            href="https://www.instagram.com/s4ttis/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <Button variant="outline" className="cursor-pointer">
               <Instagram size={24} />
             </Button>
