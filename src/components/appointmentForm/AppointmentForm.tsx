@@ -51,6 +51,7 @@ const AppointmentSchema = z.object({
     (value) => {
       const selectedDate = new Date(value);
       const today = new Date();
+      today.setHours(0, 0, 0, 0); // Reset time to start of day for comparison
       return selectedDate >= today;
     },
     { message: "Data deve ser hoje ou no futuro" }
@@ -97,8 +98,8 @@ const AppointmentForm = () => {
     [key: string]: string;
   }>({});
   const [loading, setLoading] = useState(false);
-
   const [loadingTimes, setLoadingTimes] = useState(false);
+  const [fullyBookedDates, setFullyBookedDates] = useState<string[]>([]);
 
   const timeScrollRef = useRef<HTMLDivElement>(null);
 
@@ -134,6 +135,16 @@ const AppointmentForm = () => {
     fetchAppointments(undefined);
   }, [fetchServicesAndProfessionals, fetchAppointments]);
 
+  // Fetch fully booked dates when professional and service are selected
+  useEffect(() => {
+    if (selectedProfessional && selectedService) {
+      // This would be an API call to get dates that are fully booked
+      // For now, we'll simulate this with an empty array
+      // In a real implementation, you would call an endpoint that returns fully booked dates
+      setFullyBookedDates([]);
+    }
+  }, [selectedProfessional, selectedService]);
+
   const filteredServices = services.filter(
     (service: Service) => service.category === selectedCategory
   );
@@ -148,31 +159,49 @@ const AppointmentForm = () => {
   }, [selectedService, professionals]);
 
   useEffect(() => {
-  if (selectedService && formData.date && selectedProfessional) {
-    setLoadingTimes(true);
+    if (selectedService && formData.date && selectedProfessional) {
+      setLoadingTimes(true);
 
-    fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/availability?` +
-      new URLSearchParams({
-        professionalId: selectedProfessional,
-        serviceId: selectedService,
-        date: formData.date,
-      })
-    )
-      .then(res => res.ok ? res.json() : Promise.reject("Erro"))
-      .then((times: string[]) => setAvailableTimes(times))
-      .catch(err => {
-        console.error(err);
-        setAvailableTimes([]);
-      })
-      .finally(() => setLoadingTimes(false));
-  }
-}, [selectedService, formData.date, selectedProfessional]);
-
+      fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/availability?` +
+        new URLSearchParams({
+          professionalId: selectedProfessional,
+          serviceId: selectedService,
+          date: formData.date,
+        })
+      )
+        .then(res => res.ok ? res.json() : Promise.reject("Erro"))
+        .then((times: string[]) => {
+          setAvailableTimes(times);
+          // If no times available, add this date to fullyBookedDates
+          if (times.length === 0) {
+            setFullyBookedDates(prev => [...prev, formData.date]);
+          }
+        })
+        .catch(err => {
+          console.error(err);
+          setAvailableTimes([]);
+        })
+        .finally(() => setLoadingTimes(false));
+    }
+  }, [selectedService, formData.date, selectedProfessional]);
 
   const isDateDisabled = (date: Date) => {
-    // Desabilitar domingos e segundas-feiras
-    return date.getDay() === 0 || date.getDay() === 1;
+    // Disable Sundays (0) and Mondays (1)
+    if (date.getDay() === 0 || date.getDay() === 1) {
+      return true;
+    }
+    
+    // Disable dates that are fully booked
+    const formattedDate = format(date, "yyyy-MM-dd");
+    if (fullyBookedDates.includes(formattedDate)) {
+      return true;
+    }
+    
+    // Check if the date is before today
+    const today = new Date();
+    today.setHours(0, 0, 0, 0); // Reset time to start of day for comparison
+    return date < today;
   };
 
   const validateStep = () => {
@@ -533,9 +562,7 @@ const AppointmentForm = () => {
                         setFormData({ ...formData, date: formattedDate });
                       }
                     }}
-                    disabled={(date) =>
-                      date < new Date() || isDateDisabled(date)
-                    }
+                    disabled={isDateDisabled}
                     locale={pt}
                     className="w-full"
                   />
