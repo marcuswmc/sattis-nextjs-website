@@ -148,50 +148,27 @@ const AppointmentForm = () => {
   }, [selectedService, professionals]);
 
   useEffect(() => {
-    if (selectedService && formData.date && selectedProfessional) {
-      const fetchAvailableTimes = async () => {
-        setLoadingTimes(true);
-        try {
-          const response = await fetch(
-            `${process.env.NEXT_PUBLIC_API_URL}/services/available?date=${formData.date}`
-          );
-          if (!response.ok)
-            throw new Error("Erro ao buscar horários disponíveis");
+  if (selectedService && formData.date && selectedProfessional) {
+    setLoadingTimes(true);
 
-          const data = await response.json();
+    fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/availability?` +
+      new URLSearchParams({
+        professionalId: selectedProfessional,
+        serviceId: selectedService,
+        date: formData.date,
+      })
+    )
+      .then(res => res.ok ? res.json() : Promise.reject("Erro"))
+      .then((times: string[]) => setAvailableTimes(times))
+      .catch(err => {
+        console.error(err);
+        setAvailableTimes([]);
+      })
+      .finally(() => setLoadingTimes(false));
+  }
+}, [selectedService, formData.date, selectedProfessional]);
 
-          const service = data.find((s: Service) => s._id === selectedService);
-
-          if (!service) {
-            setAvailableTimes([]);
-            return;
-          }
-
-          const professionalBookedTimes = appointments
-            .filter(
-              (appt) =>
-                appt.professionalId?._id === selectedProfessional &&
-                appt.date === formData.date &&
-                appt.status === "CONFIRMED"
-            )
-            .map((appt) => appt.time);
-
-          const freeTimes = service.availableTimes.filter(
-            (time: string) => !professionalBookedTimes.includes(time)
-          );
-
-          setAvailableTimes(freeTimes);
-        } catch (error) {
-          console.error(error);
-          setAvailableTimes([]);
-        } finally {
-          setLoadingTimes(false);
-        }
-      };
-
-      fetchAvailableTimes();
-    }
-  }, [selectedService, formData.date, selectedProfessional, appointments]);
 
   const isDateDisabled = (date: Date) => {
     // Desabilitar domingos e segundas-feiras
