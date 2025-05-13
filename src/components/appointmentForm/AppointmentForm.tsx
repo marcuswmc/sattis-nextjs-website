@@ -135,12 +135,9 @@ const AppointmentForm = () => {
     fetchAppointments(undefined);
   }, [fetchServicesAndProfessionals, fetchAppointments]);
 
-  // Fetch fully booked dates when professional and service are selected
+ 
   useEffect(() => {
     if (selectedProfessional && selectedService) {
-      // This would be an API call to get dates that are fully booked
-      // For now, we'll simulate this with an empty array
-      // In a real implementation, you would call an endpoint that returns fully booked dates
       setFullyBookedDates([]);
     }
   }, [selectedProfessional, selectedService]);
@@ -173,7 +170,6 @@ const AppointmentForm = () => {
         .then(res => res.ok ? res.json() : Promise.reject("Erro"))
         .then((times: string[]) => {
           setAvailableTimes(times);
-          // If no times available, add this date to fullyBookedDates
           if (times.length === 0) {
             setFullyBookedDates(prev => [...prev, formData.date]);
           }
@@ -192,15 +188,13 @@ const AppointmentForm = () => {
       return true;
     }
     
-    // Disable dates that are fully booked
     const formattedDate = format(date, "yyyy-MM-dd");
     if (fullyBookedDates.includes(formattedDate)) {
       return true;
     }
     
-    // Check if the date is before today
     const today = new Date();
-    today.setHours(0, 0, 0, 0); // Reset time to start of day for comparison
+    today.setHours(0, 0, 0, 0);
     return date < today;
   };
 
@@ -370,7 +364,7 @@ const AppointmentForm = () => {
                     variant="outline"
                     className="text-foreground border-border bg-gray-900 hover:bg-accent hover:text-accent-foreground grid"
                   >
-                    <Link href={"https://wa.me/351914668874"} target="_blank">
+                    <Link href={"https://wa.me/351964935644"} target="_blank">
                       Tattoo
                     </Link>
                   </Button>
