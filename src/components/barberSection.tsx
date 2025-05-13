@@ -55,12 +55,11 @@ export default function BarberSection() {
       >
         <motion.div variants={itemVariantsRight} className="flex flex-col gap-5">
           <h3 className="text-3xl">
-            A redefinir os cuidados <br />
-            com expertise e paixão.
+            Aqui, a tradição <br />
+            encontra a modernidade.
           </h3>
           <p>
-            Cuidamos do seu estilo com precisão e arte, elevando cada detalhe
-            para refletir a sua identidade única.
+            Na nossa barbearia, cada corte de cabelo, barba ou estilo é pensado para realçar a sua personalidade e garantir que você saia com a melhor versão de si mesmo.
           </p>
         </motion.div>
 

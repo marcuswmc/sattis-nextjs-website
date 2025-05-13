@@ -62,14 +62,18 @@ export default function PiercingSection() {
             em cada detalhe.
           </h3>
           <p>
-            Realçamos sua identidade com precisão e segurança, oferecendo
-            piercings que unem arte, personalidade e sofisticação.
+            Cada piercing é feito com todo o cuidado, utilizando materiais de
+            qualidade e técnicas seguras para garantir que a tua experiência
+            seja a melhor possível. Queremos que te sintas confortável e
+            confiante. Se estás a pensar em dar o próximo passo, entra de cabeça
+            nesse mundo que mistura arte, estilo e, claro, um bocadinho de
+            dorzinha.
           </p>
         </motion.div>
 
         <motion.div variants={itemVariantsRight} className="flex gap-5">
           <Button
-          asChild
+            asChild
             variant="outline"
             className="mt-5 text-md border-black text-black cursor-pointer"
           >
@@ -78,14 +82,11 @@ export default function PiercingSection() {
             </Link>
           </Button>
           <Button
-          asChild
+            asChild
             variant="link"
             className="mt-5 text-md border-black text-black cursor-pointer"
           >
-            <Link
-              href={"https://www.instagram.com/s4ttis/"}
-              target="_blank"
-            >
+            <Link href={"https://www.instagram.com/s4ttis/"} target="_blank">
               Instagram <Instagram />
             </Link>
           </Button>

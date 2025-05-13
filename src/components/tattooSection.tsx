@@ -52,37 +52,76 @@ export default function TattooSection() {
           className="flex flex-col gap-5"
         >
           <h3 className="text-3xl">
-            Arte na pele, marcada <br />
-            com alma e precisão.
+            Muito mais do que
+            <br />
+            um simples desenho
+            <br /> na pele.
           </h3>
           <p>
-            Transformamos histórias em traços únicos, combinando criatividade e
-            técnica para eternizar sua essência com arte e expressão.
+            É uma forma de expressão única. Cada linha tem uma história. Se
+            estás a pensar em fazer a tua primeira tattoo ou até a acrescentar
+            mais uma à tua coleção, prepara-te para mergulhar numa experiência
+            que vai muito além da agulha.
           </p>
         </motion.div>
 
-        <motion.div
-          variants={itemVariantsRight}
-          className="flex gap-5 flex-wrap"
-        >
-          <Button
-            asChild
-            variant="outline"
-            className="mt-5 text-md border-black text-black cursor-pointer"
-          >
-            <Link href={"https://wa.me/351914668874"} target="_blank">
-              Orçamentos <MessageCircle />
-            </Link>
-          </Button>
-          <Button
-          asChild
-            variant="link"
-            className="mt-5 text-md border-black text-black cursor-pointer"
-          >
-            <Link href={"https://www.instagram.com/gabrielagoncalvestattoo/"} target="_blank">
-              Instagram <Instagram />
-            </Link>
-          </Button>
+        <motion.div variants={itemVariantsRight} className="flex flex-col gap-6">
+          <div className="flex flex-col md:flex-row md:items-baseline md:gap-4">
+            <div>
+              <p className="font-medium text-xl">Lou Lopes: </p>
+            </div>
+            <div className="flex items-center">
+              <Button
+                asChild
+                variant="outline"
+                className="mt-5 text-md border-black text-black cursor-pointer"
+              >
+                <Link href={"https://wa.me/351964935644"} target="_blank">
+                  Orçamentos <MessageCircle />
+                </Link>
+              </Button>
+              <Button
+                asChild
+                variant="link"
+                className="mt-5 text-md border-black text-black cursor-pointer"
+              >
+                <Link
+                  href={"https://www.instagram.com/loulopes_tattoo"}
+                  target="_blank"
+                >
+                  Instagram <Instagram />
+                </Link>
+              </Button>
+            </div>
+          </div>
+          <div className="flex flex-col md:flex-row md:items-baseline md:gap-4">
+            <div>
+              <p className="font-medium text-xl">Gabriela: </p>
+            </div>
+            <div className="flex items-center">
+              <Button
+                asChild
+                variant="outline"
+                className="mt-5 text-md border-black text-black cursor-pointer"
+              >
+                <Link href={"https://wa.me/351914668874"} target="_blank">
+                  Orçamentos <MessageCircle />
+                </Link>
+              </Button>
+              <Button
+                asChild
+                variant="link"
+                className="mt-5 text-md border-black text-black cursor-pointer"
+              >
+                <Link
+                  href={"https://www.instagram.com/gabrielagoncalvestattoo/"}
+                  target="_blank"
+                >
+                  Instagram <Instagram />
+                </Link>
+              </Button>
+            </div>
+          </div>
         </motion.div>
       </motion.div>
     </motion.section>

@@ -66,7 +66,7 @@ export default function EsteticaSection() {
           className="flex flex-col gap-5"
         >
           <h3 className="text-3xl">
-            Elevamos a estética <br />
+            Elevamos a autoestima <br />
             com técnica e paixão.
           </h3>
           <p>
