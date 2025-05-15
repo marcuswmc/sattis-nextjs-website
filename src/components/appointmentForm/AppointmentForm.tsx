@@ -33,6 +33,7 @@ import {
 import { ScrollArea } from "../ui/scroll-area";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
+import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
 
 interface Category {
   _id: string;
@@ -135,7 +136,6 @@ const AppointmentForm = () => {
     fetchAppointments(undefined);
   }, [fetchServicesAndProfessionals, fetchAppointments]);
 
- 
   useEffect(() => {
     if (selectedProfessional && selectedService) {
       setFullyBookedDates([]);
@@ -161,20 +161,20 @@ const AppointmentForm = () => {
 
       fetch(
         `${process.env.NEXT_PUBLIC_API_URL}/availability?` +
-        new URLSearchParams({
-          professionalId: selectedProfessional,
-          serviceId: selectedService,
-          date: formData.date,
-        })
+          new URLSearchParams({
+            professionalId: selectedProfessional,
+            serviceId: selectedService,
+            date: formData.date,
+          })
       )
-        .then(res => res.ok ? res.json() : Promise.reject("Erro"))
+        .then((res) => (res.ok ? res.json() : Promise.reject("Erro")))
         .then((times: string[]) => {
           setAvailableTimes(times);
           if (times.length === 0) {
-            setFullyBookedDates(prev => [...prev, formData.date]);
+            setFullyBookedDates((prev) => [...prev, formData.date]);
           }
         })
-        .catch(err => {
+        .catch((err) => {
           console.error(err);
           setAvailableTimes([]);
         })
@@ -187,12 +187,12 @@ const AppointmentForm = () => {
     if (date.getDay() === 0 || date.getDay() === 1) {
       return true;
     }
-    
+
     const formattedDate = format(date, "yyyy-MM-dd");
     if (fullyBookedDates.includes(formattedDate)) {
       return true;
     }
-    
+
     const today = new Date();
     today.setHours(0, 0, 0, 0);
     return date < today;
@@ -359,15 +359,46 @@ const AppointmentForm = () => {
                   )}
                   <div className="col-span-2"></div>
 
-                  <Button
-                    asChild
-                    variant="outline"
-                    className="text-foreground border-border bg-gray-900 hover:bg-accent hover:text-accent-foreground grid"
-                  >
-                    <Link href={"https://wa.me/351964935644"} target="_blank">
-                      Tattoo
-                    </Link>
-                  </Button>
+                  <Popover>
+                    <PopoverTrigger asChild>
+                      <Button
+                        variant="outline"
+                        className="text-foreground border-border bg-gray-900 hover:bg-accent hover:text-accent-foreground grid"
+                      >
+                        Tattoo
+                      </Button>
+                    </PopoverTrigger>
+                    <PopoverContent className="w-50">
+                      <div className="flex flex-col gap-2">
+                        <Button
+                        asChild
+                        variant="outline"
+                        className="border-gray-700 bg-gray-900 hover:bg-accent hover:text-accent-foreground"
+                      >
+                        <Link
+                          href={"https://wa.me/351964935644"}
+                          target="_blank"
+                        >
+                         Lou Lopes
+                         <MessageCircle/>
+                        </Link>
+                      </Button>
+                        <Button
+                        asChild
+                        variant="outline"
+                        className="border-gray-700 bg-gray-900 hover:bg-accent hover:text-accent-foreground"
+                      >
+                        <Link
+                          href={"https://wa.me/351914668874"}
+                          target="_blank"
+                        >
+                          Gabriela
+                          <MessageCircle/>
+                        </Link>
+                      </Button>
+                      </div>
+                    </PopoverContent>
+                  </Popover>
                   <Button
                     asChild
                     variant="outline"
@@ -426,7 +457,9 @@ const AppointmentForm = () => {
                           <div className="flex flex-col items-start gap-2">
                             <div className="text-md">{service.name}</div>
                             <div className="text-[10px] font-light">
-                              <p className="text-wrap text-start line-clamp-3">{service.description}</p>
+                              <p className="text-wrap text-start line-clamp-3">
+                                {service.description}
+                              </p>
                             </div>
                           </div>
                           <div className="flex justify-between items-center w-full">
