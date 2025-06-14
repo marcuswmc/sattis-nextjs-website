@@ -1,12 +1,10 @@
 "use client";
 
 import Image from "next/image";
-import { useState, Suspense } from "react";
+
 import esteticaSectionImg from "@/data/imgs/img-section-03.jpg";
-import checkIc from "@/data/icons/check-ic.svg";
 import { Button } from "./ui/button";
-import { Calendar } from "lucide-react";
-import FormModal from "./formModal";
+import { MessageCircle } from "lucide-react";
 import { motion } from "framer-motion";
 import { Accordion } from "./ui/accordion";
 import {
@@ -14,6 +12,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "./ui/accordion";
+import Link from "next/link";
 
 const containerVariants = {
   hidden: {},
@@ -31,7 +30,7 @@ const itemVariantsRight = {
 };
 
 export default function EsteticaSection() {
-  const [showForm, setShowForm] = useState(false);
+  // const [showForm, setShowForm] = useState(false);
 
   return (
     <motion.section
@@ -113,18 +112,20 @@ export default function EsteticaSection() {
 
         <motion.div variants={itemVariantsRight}>
           <Button
-            variant="outline"
-            className="mt-5 text-md border-black text-black cursor-pointer"
-            onClick={() => setShowForm(true)}
-          >
-            Marcar horário <Calendar />
-          </Button>
+                asChild
+                variant="outline"
+                className="mt-5 text-md border-black text-black cursor-pointer"
+              >
+                <Link href={"https://wa.me/351913534380"} target="_blank">
+                  Marcar horário <MessageCircle />
+                </Link>
+              </Button>
         </motion.div>
       </motion.div>
 
-      <Suspense fallback={null}>
+      {/* <Suspense fallback={null}>
         <FormModal isOpen={showForm} onClose={() => setShowForm(false)} />
-      </Suspense>
+      </Suspense> */}
     </motion.section>
   );
 }

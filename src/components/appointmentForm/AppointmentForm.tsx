@@ -122,7 +122,10 @@ const AppointmentForm = () => {
         if (!response.ok) throw new Error("Erro ao buscar categorias");
 
         const data = await response.json();
-        setCategories(data);
+
+        const firstCategory = data.length > 0 ? [data[0]] : [];
+
+        setCategories(firstCategory);
       } catch (error) {
         console.error("Erro ao buscar categorias:", error);
         toast("Erro ao carregar categorias");
@@ -319,8 +322,8 @@ const AppointmentForm = () => {
                   <div className="flex items-center gap-2 text-black bg-white p-2 rounded-sm">
                     <MessageCircle size={18} />
                     <span className="font-light text-[10px]">
-                      * Ao clicar em <span className="font-bold">tattoo</span>{" "}
-                      ou <span className="font-bold">piercing</span> será
+                      * Ao clicar em <span className="font-bold">Estética, Tattoo</span>{" "}
+                      ou <span className="font-bold">Piercing</span> será
                       redirecionado
                       <br />
                       para o atendimento via whatsapp.
@@ -331,12 +334,7 @@ const AppointmentForm = () => {
               <CardContent>
                 <div className="grid grid-cols-2 gap-2">
                   {loadingCategories ? (
-                    Array.from({ length: 2 }).map((_, index) => (
-                      <div
-                        key={index}
-                        className="w-full h-10 bg-gray-900 rounded animate-pulse"
-                      />
-                    ))
+                    <div className="w-full h-10 bg-gray-900 rounded animate-pulse" />
                   ) : categories.length > 0 ? (
                     categories.map((category: Category) => (
                       <Button
@@ -357,7 +355,19 @@ const AppointmentForm = () => {
                       Nenhuma área disponível para esta data.
                     </p>
                   )}
-                  <div className="col-span-2"></div>
+
+                   <Button
+                    asChild
+                    variant="outline"
+                    className="text-foreground border-border bg-gray-900 hover:bg-accent hover:text-accent-foreground"
+                  >
+                    <Link href={"https://wa.me/351913534380"} target="_blank">
+                      Estética
+                    </Link>
+                  </Button>
+                  <div className="col-span-2">
+                    
+                  </div>
 
                   <Popover>
                     <PopoverTrigger asChild>
@@ -371,31 +381,18 @@ const AppointmentForm = () => {
                     <PopoverContent className="w-50">
                       <div className="flex flex-col gap-2">
                         <Button
-                        asChild
-                        variant="outline"
-                        className="border-gray-700 bg-gray-900 hover:bg-accent hover:text-accent-foreground"
-                      >
-                        <Link
-                          href={"https://wa.me/351964935644"}
-                          target="_blank"
+                          asChild
+                          variant="outline"
+                          className="border-gray-700 bg-gray-900 hover:bg-accent hover:text-accent-foreground"
                         >
-                         Lou Lopes
-                         <MessageCircle/>
-                        </Link>
-                      </Button>
-                        <Button
-                        asChild
-                        variant="outline"
-                        className="border-gray-700 bg-gray-900 hover:bg-accent hover:text-accent-foreground"
-                      >
-                        <Link
-                          href={"https://wa.me/351914668874"}
-                          target="_blank"
-                        >
-                          Gabriela
-                          <MessageCircle/>
-                        </Link>
-                      </Button>
+                          <Link
+                            href={"https://wa.me/351964935644"}
+                            target="_blank"
+                          >
+                            Lou Lopes
+                            <MessageCircle />
+                          </Link>
+                        </Button>
                       </div>
                     </PopoverContent>
                   </Popover>

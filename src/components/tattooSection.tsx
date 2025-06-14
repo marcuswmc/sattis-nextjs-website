@@ -66,7 +66,7 @@ export default function TattooSection() {
         </motion.div>
 
         <motion.div variants={itemVariantsRight} className="flex flex-col gap-6">
-          <div className="flex flex-col md:flex-row md:items-baseline md:gap-4">
+          <div className="flex flex-col md:items-baseline md:gap-2">
             <div>
               <p className="font-medium text-xl">Lou Lopes: </p>
             </div>
@@ -94,34 +94,7 @@ export default function TattooSection() {
               </Button>
             </div>
           </div>
-          <div className="flex flex-col md:flex-row md:items-baseline md:gap-4">
-            <div>
-              <p className="font-medium text-xl">Gabriela: </p>
-            </div>
-            <div className="flex items-center">
-              <Button
-                asChild
-                variant="outline"
-                className="mt-5 text-md border-black text-black cursor-pointer"
-              >
-                <Link href={"https://wa.me/351914668874"} target="_blank">
-                  Orçamentos <MessageCircle />
-                </Link>
-              </Button>
-              <Button
-                asChild
-                variant="link"
-                className="mt-5 text-md border-black text-black cursor-pointer"
-              >
-                <Link
-                  href={"https://www.instagram.com/gabrielagoncalvestattoo/"}
-                  target="_blank"
-                >
-                  Instagram <Instagram />
-                </Link>
-              </Button>
-            </div>
-          </div>
+          
         </motion.div>
       </motion.div>
     </motion.section>

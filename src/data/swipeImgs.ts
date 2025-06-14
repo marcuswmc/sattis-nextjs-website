@@ -41,4 +41,16 @@ export const SwiperData: Swiper[] = [
     image: '/swiper-imgs/img-studio-09.jpg',
     title: 'Slide 9',
   },
+  {
+    image: '/swiper-imgs/img-studio-10.jpg',
+    title: 'Slide 10',
+  },
+  {
+    image: '/swiper-imgs/img-studio-11.jpg',
+    title: 'Slide 11',
+  },
+  {
+    image: '/swiper-imgs/img-studio-12.jpg',
+    title: 'Slide 12',
+  },
 ]
