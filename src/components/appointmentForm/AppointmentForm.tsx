@@ -324,9 +324,7 @@ const AppointmentForm = () => {
                     <span className="font-light text-[10px]">
                       * Ao clicar em <span className="font-bold">Estética, Tattoo</span>{" "}
                       ou <span className="font-bold">Piercing</span> será
-                      redirecionado
-                      <br />
-                      para o atendimento via whatsapp.
+                      redirecionado para o atendimento via whatsapp.
                     </span>
                   </div>
                 </CardTitle>
