@@ -46,7 +46,7 @@ export const SwiperData: Swiper[] = [
     title: 'Slide 10',
   },
   {
-    image: '/swiper-imgs/img-studio-11.jpg',
+    image: '/swiper-imgs/img-studio-11.png',
     title: 'Slide 11',
   },
   {
