@@ -50,7 +50,7 @@ export default function EsteticaSection() {
           alt="Estética"
           quality={100}
         />
-        <span className="absolute top-5 left-5 text-white text-6xl">
+        <span className="absolute bottom-5 right-5 text-white text-6xl">
           Estética
         </span>
       </motion.div>
