@@ -34,6 +34,7 @@ import { ScrollArea } from "../ui/scroll-area";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
+import Image from "next/image";
 
 interface Category {
   _id: string;
@@ -322,8 +323,9 @@ const AppointmentForm = () => {
                   <div className="flex items-center gap-2 text-black bg-white p-2 rounded-sm">
                     <MessageCircle size={18} />
                     <span className="font-light text-[10px]">
-                      * Ao clicar em <span className="font-bold">Estética, Tattoo</span>{" "}
-                      ou <span className="font-bold">Piercing</span> será
+                      * Ao clicar em{" "}
+                      <span className="font-bold">Estética, Tattoo</span> ou{" "}
+                      <span className="font-bold">Piercing</span> será
                       redirecionado para o atendimento via whatsapp.
                     </span>
                   </div>
@@ -354,7 +356,7 @@ const AppointmentForm = () => {
                     </p>
                   )}
 
-                   <Button
+                  <Button
                     asChild
                     variant="outline"
                     className="text-foreground border-border bg-gray-900 hover:bg-accent hover:text-accent-foreground"
@@ -363,9 +365,7 @@ const AppointmentForm = () => {
                       Estética
                     </Link>
                   </Button>
-                  <div className="col-span-2">
-                    
-                  </div>
+                  <div className="col-span-2"></div>
 
                   <Popover>
                     <PopoverTrigger asChild>
@@ -513,14 +513,27 @@ const AppointmentForm = () => {
                     <Button
                       key={pro._id}
                       variant="outline"
-                      className={`text-foreground bg-gray-900 border-border hover:bg-accent hover:text-accent-foreground ${
+                      className={`text-foreground bg-gray-900 border-border hover:bg-accent hover:text-accent-foreground h-auto px-0 text-md ${
                         selectedProfessional === pro._id
                           ? "bg-gray-500 text-accent-foreground hover:bg-gray-500"
                           : ""
                       }`}
                       onClick={() => setSelectedProfessional(pro._id)}
                     >
-                      {pro.name}
+                      <div className="flex justify-between w-full items-center">
+                        <div className="pl-6">{pro.name}</div>
+                        <div>
+                          <Image
+                            src={pro.image}
+                            alt={pro.name}
+                            width={60}
+                            height={60}
+                            className="rounded-r-md object-contain"
+                            quality={100}
+                          />
+
+                        </div>
+                      </div>
                     </Button>
                   ))}
                 </div>
