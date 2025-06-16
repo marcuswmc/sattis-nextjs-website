@@ -24,7 +24,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${bricolageFont.variable} antialiased`}>
+      <body className={`${bricolageFont.variable} antialiased`} suppressHydrationWarning>
         <AppointmentsProviderWrapper>
           <Header />
           {children}

@@ -102,6 +102,9 @@ const AppointmentForm = () => {
   const [loading, setLoading] = useState(false);
   const [loadingTimes, setLoadingTimes] = useState(false);
   const [fullyBookedDates, setFullyBookedDates] = useState<string[]>([]);
+  const [blockedDates,  setBlockedDates] = useState<string[]>([
+    '2025-06-24',
+  ])
 
   const timeScrollRef = useRef<HTMLDivElement>(null);
 
@@ -112,6 +115,7 @@ const AppointmentForm = () => {
   const scrollRight = () => {
     timeScrollRef.current?.scrollBy({ left: 120, behavior: "smooth" });
   };
+
 
   useEffect(() => {
     const fetchCategories = async () => {
@@ -187,15 +191,25 @@ const AppointmentForm = () => {
   }, [selectedService, formData.date, selectedProfessional]);
 
   const isDateDisabled = (date: Date) => {
-    // Disable Sundays (0) and Mondays (1)
-    if (date.getDay() === 0 || date.getDay() === 1) {
+
+    const allowedMonday = "2025-06-23";
+    const formattedDate = format(date, "yyyy-MM-dd");
+    const isAllowedMonday = formattedDate === allowedMonday && date.getDay() === 1;
+    
+    // Disable Sundays (0) and Mondays (1), exceto a segunda específica
+    if (!isAllowedMonday && (date.getDay() === 0 || date.getDay() === 1)) {
       return true;
     }
 
-    const formattedDate = format(date, "yyyy-MM-dd");
+    if(blockedDates.includes(formattedDate)){
+      return true;
+    }
+
     if (fullyBookedDates.includes(formattedDate)) {
       return true;
     }
+
+
 
     const today = new Date();
     today.setHours(0, 0, 0, 0);
