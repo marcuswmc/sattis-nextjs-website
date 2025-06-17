@@ -20,7 +20,7 @@ export default function Footer() {
   const [showForm, setShowForm] = useState(false);
 
   return (
-    <div className="mt-28 bg-black px-8 md:px-16 py-20 flex justify-between flex-col md:flex-row gap-12 text-white">
+    <div className="mt-16 bg-black px-8 md:px-16 py-20 flex justify-between flex-col md:flex-row gap-12 text-white">
       <div className="flex flex-col gap-8">
         <div>
           <Image src={logo} alt="Sattis Studio" width={100} />
@@ -32,7 +32,7 @@ export default function Footer() {
           </div>
           <div className="flex gap-3">
             <Mail size={18} />
-            <p className="text-sm">sattis@hotmail.com</p>
+            <p className="text-sm">s4ttis@hotmail.com</p>
           </div>
           <div className="flex gap-3">
             <MapPin size={18} />
@@ -62,7 +62,7 @@ export default function Footer() {
             </Button>
           </Link>
           <Link
-            href="https://www.instagram.com/s4ttis/"
+            href="https://www.instagram.com/sattis_studio/"
             target="_blank"
             rel="noopener noreferrer"
           >

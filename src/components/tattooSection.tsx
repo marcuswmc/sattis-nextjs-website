@@ -36,7 +36,7 @@ export default function TattooSection() {
         variants={itemVariantsLeft}
         className="relative w-full md:w-[50%]"
       >
-        <Image src={tattooSectionImg} alt="Tattoo" quality={100} className="" />
+        <Image src={tattooSectionImg} alt="Tattoo" quality={100} className="w-full h-full object-cover object-center" />
         <span className="absolute bottom-5 left-5 text-white text-6xl">
           Tattoo
         </span>

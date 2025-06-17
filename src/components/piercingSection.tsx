@@ -41,7 +41,7 @@ export default function PiercingSection() {
           src={piercingSectionImg}
           alt="Piercings"
           quality={100}
-          className=""
+          className="w-full h-full object-cover object-center"
         />
         <span className="absolute bottom-5 left-5 text-white text-6xl">
           Piercings
@@ -86,7 +86,7 @@ export default function PiercingSection() {
             variant="link"
             className="mt-5 text-md border-black text-black cursor-pointer"
           >
-            <Link href={"https://www.instagram.com/s4ttis/"} target="_blank">
+            <Link href={"https://www.instagram.com/sattis_studio/"} target="_blank">
               Instagram <Instagram />
             </Link>
           </Button>

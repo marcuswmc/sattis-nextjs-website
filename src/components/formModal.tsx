@@ -2,8 +2,6 @@
 
 import { X } from "lucide-react";
 import AppointmentForm from "./appointmentForm/AppointmentForm";
-import Image from "next/image";
-import imgBg from "@/data/imgs/bg-hero.jpg";
 import { Suspense, useRef } from "react";
 
 interface ModalProps {
@@ -29,18 +27,17 @@ export default function FormModal({ isOpen, onClose }: ModalProps) {
     >
       <div
         ref={modalRef}
-        className="relative flex flex-col items-center h-auto bg-black rounded-lg w-full md:max-w-[600px] max-w-[450px] shadow-lg"
+        className="relative flex flex-col items-center h-auto bg-black rounded-lg w-full md:max-w-[600px] max-w-[450px] max-h-[90vh] shadow-lg mx-2"
       >
-        <div className="relative w-full h-auto">
+        <div className="relative w-full h-auto z-50">
           <button
             className="absolute top-3 right-3 text-gray-600 hover:text-black"
             onClick={onClose}
           >
             <X size={24} />
           </button>
-          <Image src={imgBg} alt="Marcações" className="rounded-t-lg" />
         </div>
-        <div className="p-6 w-full -mt-40 relative z-10 rounded-b-lg">
+        <div className="p-6 w-full relative z-10 rounded-b-lg overflow-y-auto">
           <div className="flex justify-center">
             <Suspense fallback={null}>
               <AppointmentForm />

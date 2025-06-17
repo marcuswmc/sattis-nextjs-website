@@ -42,9 +42,39 @@ export default function SwiperSlider() {
           spaceBetween={20}
           slidesPerView={1.2}
           breakpoints={{
+            375: {
+              slidesPerView: 1.3,
+              spaceBetween: 12,
+            },
+
+            480: {
+              slidesPerView: 1.5,
+              spaceBetween: 16,
+            },
+
+            640: {
+              slidesPerView: 2.2,
+              spaceBetween: 16,
+            },
+
+            768: {
+              slidesPerView: 2.5,
+              spaceBetween: 18,
+            },
+
             1024: {
-              slidesPerView: 4.1,
+              slidesPerView: 3.2,
               spaceBetween: 20,
+            },
+
+            1280: {
+              slidesPerView: 3.8,
+              spaceBetween: 20,
+            },
+
+            1536: {
+              slidesPerView: 4.1,
+              spaceBetween: 24,
             },
           }}
           className="xl:h-[400px]"

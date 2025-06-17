@@ -49,6 +49,7 @@ export default function EsteticaSection() {
           src={esteticaSectionImg}
           alt="Estética"
           quality={100}
+          className="w-full h-full object-cover object-center"
         />
         <span className="absolute bottom-5 right-5 text-white text-6xl">
           Estética
@@ -58,11 +59,11 @@ export default function EsteticaSection() {
       {/* Conteúdo */}
       <motion.div
         variants={itemVariantsRight}
-        className="bg-gray-100 w-full md:w-[50%] flex flex-col gap-8 py-16 px-8 justify-center md:px-20 md:rounded-tl-2xl md:rounded-l-2xl"
+        className="bg-gray-100 w-full md:w-[50%] flex flex-col gap-8 py-10 px-8 justify-center md:px-20 md:rounded-tl-2xl md:rounded-l-2xl"
       >
         <motion.div
           variants={itemVariantsRight}
-          className="flex flex-col gap-5"
+          className="flex flex-col gap-4"
         >
           <h3 className="text-3xl">
             Elevamos a autoestima <br />

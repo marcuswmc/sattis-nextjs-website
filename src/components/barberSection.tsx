@@ -41,7 +41,7 @@ export default function BarberSection() {
           src={barberSectionImg}
           alt="Barbearia"
           quality={100}
-          className=""
+          className="w-full h-full object-cover object-center"
         />
         <span className="absolute bottom-5 left-5 text-white text-6xl">
           Barbearia
@@ -67,21 +67,31 @@ export default function BarberSection() {
           <div className="flex flex-col gap-5 md:gap-0 md:flex-row md:items-center">
             <div className="flex gap-5 items-center w-full md:w-[50%]">
               <Image src={checkIc} alt="service-icon" />
-              <p className="uppercase">Cabelo e barba</p>
+              <p className="uppercase">Corte Cabelo</p>
             </div>
             <div className="flex gap-5 items-center w-full md:w-[50%]">
               <Image src={checkIc} alt="service-icon" />
-              <p className="uppercase">Cabelo comprido</p>
+              <p className="uppercase">Barba Premium</p>
             </div>
           </div>
           <div className="flex flex-col gap-5 md:gap-0 md:flex-row md:items-center">
             <div className="flex gap-5 items-center w-full md:w-[50%]">
               <Image src={checkIc} alt="service-icon" />
-              <p className="uppercase">Basic</p>
+              <p className="uppercase">Cabelo Longo</p>
             </div>
             <div className="flex gap-5 items-center w-full md:w-[50%]">
               <Image src={checkIc} alt="service-icon" />
-              <p className="uppercase">Premium</p>
+              <p className="uppercase">Cabelo & Barba</p>
+            </div>
+          </div>
+          <div className="flex flex-col gap-5 md:gap-0 md:flex-row md:items-center">
+            <div className="flex gap-5 items-center w-full md:w-[50%]">
+              <Image src={checkIc} alt="service-icon" />
+              <p className="uppercase">Barba</p>
+            </div>
+            <div className="flex gap-5 items-center w-full md:w-[50%]">
+              <Image src={checkIc} alt="service-icon" />
+              <p className="uppercase">Cabelo & Barba Premium</p>
             </div>
           </div>
         </motion.div>
