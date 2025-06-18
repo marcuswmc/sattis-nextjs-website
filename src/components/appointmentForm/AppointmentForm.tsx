@@ -108,14 +108,6 @@ const AppointmentForm = () => {
 
   const timeScrollRef = useRef<HTMLDivElement>(null);
 
-  const scrollLeft = () => {
-    timeScrollRef.current?.scrollBy({ left: -120, behavior: "smooth" });
-  };
-
-  const scrollRight = () => {
-    timeScrollRef.current?.scrollBy({ left: 120, behavior: "smooth" });
-  };
-
 
   useEffect(() => {
     const fetchCategories = async () => {
@@ -651,22 +643,6 @@ const AppointmentForm = () => {
                         </p>
                       )}
                     </div>
-                    {/* <div className="flex justify-between pt-4">
-                      <Button
-                        onClick={scrollLeft}
-                        className=" bg-white p-2 rounded-md shadow hover:bg-gray-100"
-                        aria-label="Scroll Left"
-                      >
-                        <ChevronLeft />
-                      </Button>
-                      <Button
-                        onClick={scrollRight}
-                        className=" bg-white p-2 rounded-md shadow hover:bg-gray-100"
-                        aria-label="Scroll Right"
-                      >
-                        <ChevronRight />
-                      </Button>
-                    </div> */}
                   </div>
                 )}
 

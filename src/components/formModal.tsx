@@ -37,7 +37,7 @@ export default function FormModal({ isOpen, onClose }: ModalProps) {
             <X size={24} />
           </button>
         </div>
-        <div className="p-6 w-full relative z-10 rounded-b-lg overflow-y-auto">
+        <div className="p-6 w-full relative z-10 rounded-b-lg overflow-y-auto overflow-x-hidden">
           <div className="flex justify-center">
             <Suspense fallback={null}>
               <AppointmentForm />
