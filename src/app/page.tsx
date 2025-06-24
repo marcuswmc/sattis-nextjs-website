@@ -49,7 +49,7 @@ export default function Home() {
       <div id="tattoos" className="scroll-mt-5">
         <TattooSection />
       </div>
-      <motion.div 
+      {/* <motion.div 
       variants={textVariant}
       initial="hidden"
       whileInView="visible"
@@ -65,7 +65,7 @@ export default function Home() {
 
         <EsteticaSection />
         </Suspense>
-      </div>
+      </div> */}
       <motion.div 
       variants={textVariant}
       initial="hidden"

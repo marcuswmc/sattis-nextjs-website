@@ -17,7 +17,7 @@ const links = [
   { name: "Início", path: "#inicio" },
   { name: "Barbearia", path: "#barbearia" },
   { name: "Tattoo", path: "#tattoos" },
-  { name: "Estética", path: "#estetica" },
+  // { name: "Estética", path: "#estetica" },
   { name: "Piercings", path: "#piercings" },
 ];
 

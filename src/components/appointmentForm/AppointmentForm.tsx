@@ -330,10 +330,11 @@ const AppointmentForm = () => {
                     <MessageCircle size={18} />
                     <span className="font-light text-[10px]">
                       * Ao clicar em{" "}
-                      <span className="font-bold">Estética, Tattoo</span> ou{" "}
-                      <span className="font-bold">Piercing</span> será
-                      redirecionado para o atendimento via whatsapp.
-                    </span>
+                      <span className="font-bold">Tattoo</span> será redirecionado para o atendimento via whatsapp.</span>
+                      {/*  ou{" "}
+                      <span className="font-bold">Piercing</span> será */}
+                      
+                    
                   </div>
                 </CardTitle>
               </CardHeader>
@@ -362,7 +363,7 @@ const AppointmentForm = () => {
                     </p>
                   )}
 
-                  <Button
+                  {/* <Button
                     asChild
                     variant="outline"
                     className="text-foreground border-border bg-gray-900 hover:bg-accent hover:text-accent-foreground"
@@ -370,8 +371,8 @@ const AppointmentForm = () => {
                     <Link href={"https://wa.me/351913534380"} target="_blank">
                       Estética
                     </Link>
-                  </Button>
-                  <div className="col-span-2"></div>
+                  </Button> */}
+                  {/* <div className="col-span-2"></div> */}
 
                   <Popover>
                     <PopoverTrigger asChild>
@@ -400,7 +401,7 @@ const AppointmentForm = () => {
                       </div>
                     </PopoverContent>
                   </Popover>
-                  <Button
+                  {/* <Button
                     asChild
                     variant="outline"
                     className="text-foreground border-border bg-gray-900 hover:bg-accent hover:text-accent-foreground"
@@ -408,7 +409,7 @@ const AppointmentForm = () => {
                     <Link href={"https://wa.me/351913534380"} target="_blank">
                       Piercing
                     </Link>
-                  </Button>
+                  </Button> */}
                 </div>
 
                 <Button

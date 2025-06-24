@@ -51,7 +51,7 @@ export default function PiercingSection() {
       {/* Conteúdo */}
       <motion.div
         variants={itemVariantsRight}
-        className="bg-gray-100 w-full md:w-[50%] flex flex-col gap-8 py-20 px-8 justify-center md:px-20 order-last md:order-first md:rounded-tr-2xl md:rounded-r-2xl"
+        className="bg-gray-100 w-full md:w-[50%] flex flex-col gap-8 py-20 px-8 justify-center md:px-20 order-last md:rounded-tr-2xl md:rounded-r-2xl"
       >
         <motion.div
           variants={itemVariantsRight}
@@ -70,7 +70,10 @@ export default function PiercingSection() {
             dorzinha.
           </p>
         </motion.div>
-
+        <div>
+          <span className="border border-gray-700 p-2">Temporariamente indisponível</span>
+        </div> 
+        {/* 
         <motion.div variants={itemVariantsRight} className="flex gap-5">
           <Button
             asChild
@@ -90,7 +93,7 @@ export default function PiercingSection() {
               Instagram <Instagram />
             </Link>
           </Button>
-        </motion.div>
+        </motion.div> */}
       </motion.div>
     </motion.section>
   );
