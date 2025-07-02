@@ -103,7 +103,12 @@ const AppointmentForm = () => {
   const [loadingTimes, setLoadingTimes] = useState(false);
   const [fullyBookedDates, setFullyBookedDates] = useState<string[]>([]);
   const [blockedDates,  setBlockedDates] = useState<string[]>([
-    '2025-06-24',
+    '2025-07-02',
+    '2025-07-03',
+    '2025-07-04',
+    '2025-07-05',
+    '2025-07-25',
+    '2025-07-26',
   ])
 
   const timeScrollRef = useRef<HTMLDivElement>(null);
