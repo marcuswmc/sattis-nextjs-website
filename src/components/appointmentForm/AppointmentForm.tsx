@@ -102,17 +102,16 @@ const AppointmentForm = () => {
   const [loading, setLoading] = useState(false);
   const [loadingTimes, setLoadingTimes] = useState(false);
   const [fullyBookedDates, setFullyBookedDates] = useState<string[]>([]);
-  const [blockedDates,  setBlockedDates] = useState<string[]>([
-    '2025-07-02',
-    '2025-07-03',
-    '2025-07-04',
-    '2025-07-05',
-    '2025-07-25',
-    '2025-07-26',
-  ])
+  const [blockedDates, setBlockedDates] = useState<string[]>([
+    "2025-07-02",
+    "2025-07-03",
+    "2025-07-04",
+    "2025-07-05",
+    "2025-07-25",
+    "2025-07-26",
+  ]);
 
   const timeScrollRef = useRef<HTMLDivElement>(null);
-
 
   useEffect(() => {
     const fetchCategories = async () => {
@@ -174,10 +173,27 @@ const AppointmentForm = () => {
       )
         .then((res) => (res.ok ? res.json() : Promise.reject("Erro")))
         .then((times: string[]) => {
-          setAvailableTimes(times);
+          const now = new Date();
+          const selectedDate = new Date(formData.date);
+          const isToday = now.toDateString() === selectedDate.toDateString();
+
+          // Salva todos os horários antes de filtrar
           if (times.length === 0) {
             setFullyBookedDates((prev) => [...prev, formData.date]);
+            setAvailableTimes([]);
+            return;
           }
+
+          const filteredTimes = isToday
+            ? times.filter((timeStr) => {
+                const [hours, minutes] = timeStr.split(":").map(Number);
+                const timeDate = new Date(formData.date);
+                timeDate.setHours(hours, minutes, 0, 0);
+                return timeDate > now;
+              })
+            : times;
+
+          setAvailableTimes(filteredTimes);
         })
         .catch((err) => {
           console.error(err);
@@ -188,25 +204,23 @@ const AppointmentForm = () => {
   }, [selectedService, formData.date, selectedProfessional]);
 
   const isDateDisabled = (date: Date) => {
-
     const allowedMonday = "2025-06-23";
     const formattedDate = format(date, "yyyy-MM-dd");
-    const isAllowedMonday = formattedDate === allowedMonday && date.getDay() === 1;
-    
+    const isAllowedMonday =
+      formattedDate === allowedMonday && date.getDay() === 1;
+
     // Disable Sundays (0) and Mondays (1), exceto a segunda específica
     if (!isAllowedMonday && (date.getDay() === 0 || date.getDay() === 1)) {
       return true;
     }
 
-    if(blockedDates.includes(formattedDate)){
+    if (blockedDates.includes(formattedDate)) {
       return true;
     }
 
     if (fullyBookedDates.includes(formattedDate)) {
       return true;
     }
-
-
 
     const today = new Date();
     today.setHours(0, 0, 0, 0);
@@ -334,12 +348,11 @@ const AppointmentForm = () => {
                   <div className="flex items-center gap-2 text-black bg-white p-2 rounded-sm">
                     <MessageCircle size={18} />
                     <span className="font-light text-[10px]">
-                      * Ao clicar em{" "}
-                      <span className="font-bold">Tattoo</span> será redirecionado para o atendimento via whatsapp.</span>
-                      {/*  ou{" "}
+                      * Ao clicar em <span className="font-bold">Tattoo</span>{" "}
+                      será redirecionado para o atendimento via whatsapp.
+                    </span>
+                    {/*  ou{" "}
                       <span className="font-bold">Piercing</span> será */}
-                      
-                    
                   </div>
                 </CardTitle>
               </CardHeader>
@@ -543,7 +556,6 @@ const AppointmentForm = () => {
                             className="rounded-r-md object-contain"
                             quality={100}
                           />
-
                         </div>
                       </div>
                     </Button>
