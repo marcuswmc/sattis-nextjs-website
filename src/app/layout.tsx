@@ -18,8 +18,36 @@ const bricolageFont = Bricolage_Grotesque({
 });
 
 export const metadata: Metadata = {
-  title: "Sattis Studio",
+  title: {
+    default: "Sattis Studio - Barbearia, Tattoo, Estética e Piercings",
+    template: "%s | Sattis Studio",
+  },
   description: "Barbearia, Tattoo, Estética e Piercings",
+  keywords: [
+    "barbearia",
+    "barber",
+    "tattoo",
+    "tatuagem",
+    "estética",
+    "piercings",
+    "barbeiro Porto",
+    "tatuador Porto",
+    "salão beleza Porto",
+  ],
+  authors: [{ name: "Sattis Studio" }],
+  creator: "Sattis Studio",
+  publisher: "Sattis Studio",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
 };
 
 export default function RootLayout({
@@ -28,7 +56,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="pt-PT">
+      <head>
+      <link rel="canonical" href="https://sattis.me" />
+      </head>
       <body
         className={`${bricolageFont.variable} antialiased`}
         suppressHydrationWarning
