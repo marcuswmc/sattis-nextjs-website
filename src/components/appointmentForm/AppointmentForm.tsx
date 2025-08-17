@@ -103,12 +103,16 @@ const AppointmentForm = () => {
   const [loadingTimes, setLoadingTimes] = useState(false);
   const [fullyBookedDates, setFullyBookedDates] = useState<string[]>([]);
   const [blockedDates, setBlockedDates] = useState<string[]>([
-    "2025-07-02",
-    "2025-07-03",
-    "2025-07-04",
-    "2025-07-05",
-    "2025-07-25",
-    "2025-07-26",
+    "2025-09-18",
+    "2025-09-19",
+    "2025-09-20",
+    "2025-09-23",
+    "2025-09-24",
+    "2025-09-25",
+    "2025-09-26",
+    "2025-09-27",
+    "2025-09-30",
+
   ]);
 
   const timeScrollRef = useRef<HTMLDivElement>(null);
@@ -594,14 +598,15 @@ const AppointmentForm = () => {
               <CardHeader>
                 <CardTitle className="flex flex-col gap-4 text-foreground ">
                   <p className="text-lg font-medium leading-tight">
-                    Escolha uma data e horário.
+                    Escolha uma data e horário. <br/>
+                    <span className="font-medium text-sm">Férias: 18 a 30 de Setembro de 2025.</span>
                   </p>
                   <div className="flex items-center gap-2 text-black bg-white p-2 rounded-sm">
                     <MessageCircle size={18} />
-                    <span className="font-light text-[10px]">
+                    <p className="font-light text-[10px]">
                       Escolha o dia e em seguida defina o horário de sua
                       preferência.
-                    </span>
+                    </p>
                   </div>
                 </CardTitle>
               </CardHeader>
