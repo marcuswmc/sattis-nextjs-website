@@ -70,10 +70,13 @@ export default function PiercingSection() {
             dorzinha.
           </p>
         </motion.div>
-        {/* <div>
-          <span className="border border-gray-700 p-2">Temporariamente indisponível</span>
-        </div>  */}
-        
+        <div>
+          <span className="border border-gray-700 p-2">
+            Temporariamente indisponível
+          </span>
+        </div>
+
+        {/*  
         <motion.div variants={itemVariantsRight} className="flex gap-5">
           <Button
             asChild
@@ -94,6 +97,7 @@ export default function PiercingSection() {
             </Link>
           </Button>
         </motion.div>
+        */}
       </motion.div>
     </motion.section>
   );
