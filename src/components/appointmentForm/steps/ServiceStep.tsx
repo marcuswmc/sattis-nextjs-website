@@ -1,0 +1,92 @@
+"use client";
+
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import { Euro, Hourglass } from "lucide-react";
+import { Service } from "@/hooks/appointments-context";
+
+interface ServiceStepProps {
+  services: Service[];
+  selectedService: string;
+  onSelectService: (serviceId: string) => void;
+  onNext: () => void;
+  onBack: () => void;
+}
+
+export default function ServiceStep({
+  services,
+  selectedService,
+  onSelectService,
+  onNext,
+  onBack,
+}: ServiceStepProps) {
+  return (
+    <Card className="bg-black text-card-foreground border-none">
+      <CardHeader className="items-center">
+        <CardTitle className="flex flex-col gap-4 text-foreground">
+          <p className="text-lg font-medium leading-tight">
+            Agora escolha um dos serviços disponíveis.
+          </p>
+        </CardTitle>
+      </CardHeader>
+      <CardContent>
+        <ScrollArea className="h-[280px]">
+          <div className="grid gap-2">
+            {services.map((service: Service) => (
+              <Button
+                key={service._id}
+                className={`py-16 px-4 bg-gray-900 text-foreground rounded-md border border-border hover:bg-accent hover:text-accent-foreground ${
+                  selectedService === service._id
+                    ? "bg-gray-500 text-accent-foreground hover:bg-gray-500"
+                    : ""
+                }`}
+                onClick={() => onSelectService(service._id)}
+              >
+                <div className="w-full flex flex-col gap-2 items-start">
+                  <div className="flex flex-col items-start gap-2">
+                    <div className="text-md">{service.name}</div>
+                    <div className="text-[10px] font-light">
+                      <p className="text-wrap text-start line-clamp-3">
+                        {service.description}
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex justify-between items-center w-full">
+                    <div className="flex gap-2 text-[16px] items-center">
+                      <Euro size={16} /> {service.price}
+                    </div>
+                    <div className="flex gap-2 text-[14px] items-center">
+                      <Hourglass size={14} /> {service.duration} min
+                    </div>
+                  </div>
+                </div>
+              </Button>
+            ))}
+          </div>
+        </ScrollArea>
+        <Button
+          className="mt-10 w-full bg-primary text-primary-foreground hover:bg-primary/90"
+          onClick={onNext}
+          disabled={!selectedService}
+        >
+          Próximo
+        </Button>
+        <Button
+          variant="ghost"
+          className="mt-4 w-full text-foreground hover:bg-accent"
+          onClick={onBack}
+        >
+          Voltar
+        </Button>
+      </CardContent>
+    </Card>
+  );
+}
+
+
