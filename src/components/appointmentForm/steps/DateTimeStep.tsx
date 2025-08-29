@@ -44,7 +44,7 @@ export default function DateTimeStep({
         <CardTitle className="flex flex-col gap-4 text-foreground ">
           <p className="text-lg font-medium leading-tight">
             Escolha uma data e horário. <br/>
-            <span className="font-medium text-sm">Férias: 18 a 30 de Setembro de 2025.</span>
+            <span className="font-medium text-sm">Férias: 19 a 30 de Setembro de 2025.</span>
           </p>
           <div className="flex items-center gap-2 text-black bg-white p-2 rounded-sm">
             <MessageCircle size={18} />
