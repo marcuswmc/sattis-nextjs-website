@@ -58,7 +58,6 @@ const AppointmentForm = () => {
   const [loadingTimes, setLoadingTimes] = useState(false);
   const [fullyBookedDates, setFullyBookedDates] = useState<string[]>([]);
   const [blockedDates, setBlockedDates] = useState<string[]>([
-    "2025-09-18",
     "2025-09-19",
     "2025-09-20",
     "2025-09-23",
@@ -163,7 +162,7 @@ const AppointmentForm = () => {
   }, [selectedService, formData.date, selectedProfessional]);
 
   const isDateDisabled = (date: Date) => {
-    const allowedMonday = "2025-06-23";
+    const allowedMonday = "2025-09-15";
     const formattedDate = format(date, "yyyy-MM-dd");
     const isAllowedMonday =
       formattedDate === allowedMonday && date.getDay() === 1;
