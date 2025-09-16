@@ -172,7 +172,14 @@ const AppointmentForm = () => {
       return true;
     }
 
-    if (blockedDates.includes(formattedDate)) {
+    // Bloqueios específicos
+    const selectedPro = (professionals || []).find(
+      (p) => p._id === selectedProfessional
+    );
+    const shouldApplyBlockedDates =
+      (selectedPro?.name || "").toLowerCase() === "paulinha";
+
+    if (shouldApplyBlockedDates && blockedDates.includes(formattedDate)) {
       return true;
     }
 
