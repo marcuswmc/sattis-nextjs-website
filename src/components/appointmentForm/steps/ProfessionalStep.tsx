@@ -1,12 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Image from "next/image";
 import { Professional } from "@/hooks/appointments-context";
 
@@ -40,7 +35,7 @@ export default function ProfessionalStep({
             <Button
               key={pro._id}
               variant="outline"
-              className={`text-foreground bg-gray-900 border-border hover:bg-accent hover:text-accent-foreground h-auto px-0 text-md ${
+              className={`text-foreground bg-gray-900 border-border hover:bg-accent hover:text-accent-foreground h-[80px] px-0 text-md overflow-hidden ${
                 selectedProfessional === pro._id
                   ? "bg-gray-500 text-accent-foreground hover:bg-gray-500"
                   : ""
@@ -48,7 +43,15 @@ export default function ProfessionalStep({
               onClick={() => onSelectProfessional(pro._id)}
             >
               <div className="flex justify-between w-full items-center">
-                <div className="pl-6">{pro.name}</div>
+                <div className="pl-4 flex flex-col items-start gap-0.5">
+                  {pro.name}
+                  {pro.name.toLowerCase() === "paulinha" && (
+                    <span className="text-[10px] md:text-xs">
+                      Férias: 19 a 30 de Setembro de 2025.
+                    </span>
+                  )}
+                </div>
+
                 <div>
                   <Image
                     src={pro.image}
@@ -81,5 +84,3 @@ export default function ProfessionalStep({
     </Card>
   );
 }
-
-
