@@ -45,11 +45,6 @@ export default function ProfessionalStep({
               <div className="flex justify-between w-full items-center">
                 <div className="pl-4 flex flex-col items-start gap-0.5">
                   {pro.name}
-                  {pro.name.toLowerCase() === "paulinha" && (
-                    <span className="text-[10px] md:text-xs">
-                      Férias: 19 a 30 de Setembro de 2025.
-                    </span>
-                  )}
                 </div>
 
                 <div>
