@@ -57,17 +57,7 @@ const AppointmentForm = () => {
   const [loading, setLoading] = useState(false);
   const [loadingTimes, setLoadingTimes] = useState(false);
   const [fullyBookedDates, setFullyBookedDates] = useState<string[]>([]);
-  const [blockedDates, setBlockedDates] = useState<string[]>([
-    "2025-09-19",
-    "2025-09-20",
-    "2025-09-23",
-    "2025-09-24",
-    "2025-09-25",
-    "2025-09-26",
-    "2025-09-27",
-    "2025-09-30",
-
-  ]);
+  const [blockedDates, setBlockedDates] = useState<string[]>([]);
 
   const timeScrollRef = useRef<HTMLDivElement>(null);
 
@@ -173,19 +163,19 @@ const AppointmentForm = () => {
     }
 
     // Bloqueios específicos
-    const selectedPro = (professionals || []).find(
-      (p) => p._id === selectedProfessional
-    );
-    const shouldApplyBlockedDates =
-      (selectedPro?.name || "").toLowerCase() === "paulinha";
+    // const selectedPro = (professionals || []).find(
+    //   (p) => p._id === selectedProfessional
+    // );
+    // const shouldApplyBlockedDates =
+    //   (selectedPro?.name || "").toLowerCase() === "paulinha";
 
-    if (shouldApplyBlockedDates && blockedDates.includes(formattedDate)) {
+    if (blockedDates.includes(formattedDate)) {
       return true;
     }
 
-    if (fullyBookedDates.includes(formattedDate)) {
-      return true;
-    }
+    // if (fullyBookedDates.includes(formattedDate)) {
+    //   return true;
+    // }
 
     const today = new Date();
     today.setHours(0, 0, 0, 0);
