@@ -10,6 +10,7 @@ import {
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Euro, Hourglass } from "lucide-react";
 import { Service } from "@/hooks/appointments-context";
+import { useTranslations } from "next-intl";
 
 interface ServiceStepProps {
   services: Service[];
@@ -25,13 +26,15 @@ export default function ServiceStep({
   onSelectService,
   onNext,
   onBack,
-}: ServiceStepProps) {
+}: ServiceStepProps) 
+{
+  const t = useTranslations('book-form')
   return (
     <Card className="bg-black text-card-foreground border-none">
       <CardHeader className="items-center">
         <CardTitle className="flex flex-col gap-4 text-foreground">
           <p className="text-lg font-medium leading-tight">
-            Agora escolha um dos serviços disponíveis.
+            {t('service-step.title')}
           </p>
         </CardTitle>
       </CardHeader>
@@ -75,14 +78,14 @@ export default function ServiceStep({
           onClick={onNext}
           disabled={!selectedService}
         >
-          Próximo
+          {t('form-btns.next-step-btn')}
         </Button>
         <Button
           variant="ghost"
           className="mt-4 w-full text-foreground hover:bg-accent"
           onClick={onBack}
         >
-          Voltar
+          {t('form-btns.back-step-btn')}
         </Button>
       </CardContent>
     </Card>

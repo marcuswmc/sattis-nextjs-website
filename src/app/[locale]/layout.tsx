@@ -11,6 +11,7 @@ import {
   CookieBanner,
   ConsentManagerDialog,
 } from "@c15t/nextjs";
+import { NextIntlClientProvider } from "next-intl";
 
 const bricolageFont = Bricolage_Grotesque({
   variable: "--font-bricolage",
@@ -58,7 +59,7 @@ export default function RootLayout({
   return (
     <html lang="pt-PT">
       <head>
-      <link rel="canonical" href="https://sattis.me" />
+        <link rel="canonical" href="https://sattis.me" />
       </head>
       <body
         className={`${bricolageFont.variable} antialiased`}
@@ -95,9 +96,11 @@ export default function RootLayout({
           <ConsentManagerDialog />
 
           <AppointmentsProviderWrapper>
-            <Header />
-            {children}
-            <Toaster />
+            <NextIntlClientProvider>
+              <Header />
+              {children}
+              <Toaster />
+            </NextIntlClientProvider>
             <Analytics />
           </AppointmentsProviderWrapper>
         </ConsentManagerProvider>

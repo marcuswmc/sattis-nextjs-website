@@ -15,9 +15,11 @@ import FormModal from "./formModal";
 
 import { useState } from "react";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 
 export default function Footer() {
   const [showForm, setShowForm] = useState(false);
+  const t = useTranslations('footer-btns')
 
   return (
     <div className="mt-16 bg-black px-8 md:px-16 py-20 flex justify-between flex-col md:flex-row gap-12 text-white">
@@ -50,14 +52,14 @@ export default function Footer() {
             className="text-md cursor-pointer"
             onClick={() => setShowForm(true)}
           >
-            Marcar horário
+            {t('book-btn')}
             <Calendar />
           </Button>
         </div>
         <div className="flex space-x-5">
           <Link href={"https://wa.me/351915003454"} target="_blank">
             <Button variant="outline">
-              Fale Connosco
+              {t('contact-btn')}
               <MessageCircle />
             </Button>
           </Link>

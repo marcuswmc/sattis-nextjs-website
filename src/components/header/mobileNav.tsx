@@ -12,19 +12,29 @@ import { Menu, Calendar } from "lucide-react";
 import { Button } from "../ui/button";
 import { DialogTitle } from "@radix-ui/react-dialog";
 import FormModal from "../formModal";
+import { useTranslations } from "next-intl";
 
-const links = [
-  { name: "Início", path: "#inicio" },
-  { name: "Barbearia", path: "#barbearia" },
-  { name: "Tattoo", path: "#tattoos" },
-  // { name: "Estética", path: "#estetica" },
-  { name: "Piercings", path: "#piercings" },
-];
 
 export default function MobileNav() {
   const [activeSection, setActiveSection] = useState("");
   const [open, setOpen] = useState(false);
   const [showForm, setShowForm] = useState(false);
+
+  const t = useTranslations('navLinks')
+  const tBtn = useTranslations('hero')
+  
+    const linkKeys = [
+      "home",
+      "barbershop",
+      "tattoo",
+      "piercings"
+    ];
+  
+    const navLinks = linkKeys.map((key) => ({
+      key,
+      name: t(`${key}.name`),
+      path: t(`${key}.path`)
+    }))
 
   function handleOpenForm() {
     setOpen(false)
@@ -47,7 +57,7 @@ export default function MobileNav() {
     const handleScrollSpy = () => {
       const scrollPosition = window.scrollY;
 
-      links.forEach(({ path }) => {
+      navLinks.forEach(({ path }) => {
         if (path.startsWith("#")) {
           const section = document.querySelector(path);
           if (section) {
@@ -85,16 +95,16 @@ export default function MobileNav() {
         className="bg-black/2 backdrop-blur-md p-5 flex flex-col justify-between items-end pb-20"
       >
         <nav className="flex flex-col items-end gap-11 pt-20">
-          {links.map((link, index) => (
+          {navLinks.map(({key, name, path}) => (
             <Link
-              href={link.path}
-              key={index}
-              onClick={(event) => handleScroll(event, link.path)}
+              href={path}
+              key={key}
+              onClick={(event) => handleScroll(event, path)}
               className={`text-white ${
-                activeSection === link.path ? "font-bold" : "font-normal"
+                activeSection === path ? "font-bold" : "font-normal"
               }  font-medium text-md cursor-pointer`}
             >
-              {link.name}
+              {name}
             </Link>
           ))}
         </nav>
@@ -103,7 +113,7 @@ export default function MobileNav() {
           className="text-md"
           onClick={() => handleOpenForm()}
         >
-          Marcar horario
+          {tBtn('book-now-btn')}
           <Calendar />
         </Button>
       </SheetContent>

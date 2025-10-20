@@ -1,0 +1,123 @@
+{
+  "navLinks": {
+    "home": {
+      "name": "Início",
+      "path": "#inicio"
+    },
+    "barbershop": {
+      "name": "Barbearia",
+      "path": "#barbearia"
+    },
+    "tattoo": {
+      "name": "Tattoos",
+      "path": "#tattoos"
+    },
+    "piercings": {
+      "name": "Piercings",
+      "path": "#piercings"
+    }
+  },
+  "breath-sections": {
+    "section-01": {
+      "f-line-text": "Descubra a fusão perfeita entre",
+      "s-line-text": "estilo,",
+      "t-line-text": "arte e cuidado."
+    },
+    "section-02": {
+      "f-line-text": "Mais que tatuagens e piercings,",
+      "s-line-text": "expressamos a sua identidade"
+    }
+  },
+  "hero": {
+    "book-now-btn": "Marcar horário"
+  },
+  "about-section": {
+    "f-line-title": "Transformamos ",
+    "s-line-title": "estilo em ",
+    "t-line-title": "expressão.",
+    "subtitle": "Cuidamos do seu estilo com precisão e arte, elevando cada detalhe para refletir a sua identidade única.",
+    "slide-btn-text": "Veja mais estilos"
+  },
+  "barbershop-section": {
+    "section-title": "Barbearia",
+    "f-line-title": "Aqui, a tradição",
+    "s-line-title": "encontra a modernidade.",
+    "description": "Na nossa barbearia, cada corte de cabelo, barba ou estilo é pensado para realçar a sua personalidade e garantir que você saia com a melhor versão de si mesmo.",
+    "service-01": "Corte Cabelo",
+    "service-02": "Cabelo Longo",
+    "service-03": "Cabelo & Barba",
+    "service-04": "Barba",
+    "service-05": "Barba Premium",
+    "service-06": "Cabelo & Barba Premium",
+    "barbershop-book-btn": "Marcar horário"
+  },
+  "tattoo-section": {
+    "section-title": "Tattoo",
+    "f-line-title": "Muito mais do que",
+    "s-line-title": "um simples desenho",
+    "t-line-title": "na pele.",
+    "description": "É uma forma de expressão única. Cada linha tem uma história. Se estás a pensar em fazer a tua primeira tattoo ou até a acrescentar mais uma à tua coleção, prepara-te para mergulhar numa experiência que vai muito além da agulha.",
+    "professional-name": "Lou Lopes",
+    "tattoo-book-btn": "Orçamentos"
+  },
+  "piercing-section": {
+    "section-title": "Piercings",
+    "f-line-title": "Estilo e atitude",
+    "s-line-title": "em cada detalhe.",
+    "description": "Cada piercing é feito com todo o cuidado, utilizando materiais de qualidade e técnicas seguras para garantir que a tua experiência seja a melhor possível. Queremos que te sintas confortável e confiante. Se estás a pensar em dar o próximo passo, entra de cabeça nesse mundo que mistura arte, estilo e, claro, um bocadinho de dorzinha.",
+    "piercing-book-btn": "Temporariamente indisponível"
+  },
+  "footer-btns": {
+    "book-btn": "Marcar horário",
+    "contact-btn": "Fale Connosco"
+  },
+  "book-form": {
+    "category-step": {
+      "title": "Selecione a área desejada para prosseguir com a marcação.",
+      "note-message": {
+        "f-line": "Ao clicar em",
+        "strong-text": "Tattoo",
+        "s-line": "será redirecionado para o atendimento via whatsapp."
+      }
+    },
+    "service-step": {
+      "title": "Agora escolha um dos serviços disponíveis."
+    },
+    "professional-step": {
+      "title": "Agora escolha um dos profissionais disponíveis."
+    },
+    "date-time-step": {
+      "title": "Escolha uma data e horário.",
+      "note-message": "Escolha o dia e em seguida defina o horário de sua preferência.",
+      "no-time-message": "Nenhum horário disponível para esta data."
+    },
+    "customer-data-step": {
+      "title": "Preencha com seus dados para confirmar a sua marcação",
+      "note-message": "Os seus dados são importantes para confirmar a marcação e também para notificações caso seja necessário.",
+      "form-inputs": {
+        "fname": "Nome Completo",
+        "email": "Email",
+        "phone": "Telefone"
+      }
+    },
+    "confirmation-step": {
+      "title": "A marcação foi efetuada!",
+      "summary": "Resumo da marcação:",
+      "category": "Categoria:",
+      "service": "Serviço:",
+      "professional": "Profissional:",
+      "date": "Data:",
+      "time": "Hora:",
+      "name": "Nome:",
+      "email": "Email",
+      "phone": "Telefone:",
+      "note-01": "Não comparecimento sem aviso prévio de 24 horas ou atrasos superiores a 15 minutos será cobrado 30% do valor do procedimento que faltou para conseguir remarcar novamente.",
+      "note-02": "Para mais informações ou dúvidas, estamos à disposição!"
+    },
+    "form-btns": {
+      "next-step-btn": "Continuar",
+      "back-step-btn": "Voltar",
+      "confirm-book-btn": "Confirmar Marcação"
+    }
+  }
+}

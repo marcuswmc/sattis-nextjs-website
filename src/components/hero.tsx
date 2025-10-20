@@ -4,11 +4,13 @@ import { useState, useRef, useEffect } from "react";
 import { Button } from "./ui/button";
 import { Calendar, X } from "lucide-react";
 import FormModal from "./formModal";
-
+import { useTranslations } from "next-intl";
 
 export default function Hero() {
   const [showForm, setShowForm] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
+
+  const t = useTranslations('hero')
 
   useEffect(() => {
     if(videoRef.current){
@@ -46,7 +48,7 @@ export default function Hero() {
           className="text-md"
           onClick={() => setShowForm(true)}
         >
-          Marcar horário
+          {t('book-now-btn')}
           <Calendar />
         </Button>
       </div>

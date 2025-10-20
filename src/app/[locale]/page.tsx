@@ -2,12 +2,12 @@
 
 import AboutSection from "@/components/aboutSection";
 import BarberSection from "@/components/barberSection";
-import EsteticaSection from "@/components/esteticaSection";
 import Footer from "@/components/footer";
 import Hero from "@/components/hero";
 import PiercingSection from "@/components/piercingSection";
 import TattooSection from "@/components/tattooSection";
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 import { Suspense } from "react";
 
 const textVariant = {
@@ -16,6 +16,8 @@ const textVariant = {
 }
 
 export default function Home() {
+  const t = useTranslations('breath-sections')
+
   return (
     <main className="overflow-hidden">
       <div id="inicio" className="scroll-mt-5">
@@ -39,10 +41,10 @@ export default function Home() {
       viewport={{ once: true, amount: 0.3 }}
       className="py-28 px-8 md:px-16 text-right">
         <h3 className="text-4xl">
-          Descubra a fusão perfeita entre{" "}
+          {t('section-01.f-line-text')}{" "}
           <span className="font-medium">
-            estilo,
-            <br /> arte e cuidado.
+           {t('section-01.s-line-text')}
+            <br /> {t('section-01.t-line-text')}
           </span>
         </h3>
       </motion.div>
@@ -72,9 +74,9 @@ export default function Home() {
       whileInView="visible"
       viewport={{ once: true, amount: 0.3 }} className="py-28 px-8 md:px-16 text-right">
         <h3 className="text-4xl">
-          Mais que tatuagens e piercings,
+         {t('section-02.f-line-text')}
           <br />{" "}
-          <span className="font-medium">expressamos a sua identidade</span>.
+          <span className="font-medium">{t('section-02.s-line-text')}</span>.
         </h3>
       </motion.div>
       <div id="piercings" className="scroll-mt-5">

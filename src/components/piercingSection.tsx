@@ -7,6 +7,7 @@ import { delay, motion } from "framer-motion";
 
 import piercingSectionImg from "@/data/imgs/img-section-04.jpg";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 
 const containerVariants = {
   hidden: {},
@@ -24,6 +25,8 @@ const itemVariantsRight = {
 };
 
 export default function PiercingSection() {
+  const t = useTranslations('piercing-section')
+
   return (
     <motion.section
       variants={containerVariants}
@@ -44,7 +47,7 @@ export default function PiercingSection() {
           className="w-full h-full object-cover object-center"
         />
         <span className="absolute bottom-5 left-5 text-white text-6xl">
-          Piercings
+          {t('section-title')}
         </span>
       </motion.div>
 
@@ -58,21 +61,16 @@ export default function PiercingSection() {
           className="flex flex-col gap-5"
         >
           <h3 className="text-3xl">
-            Estilo e atitude <br />
-            em cada detalhe.
+            {t('f-line-title')} <br />
+            {t('s-line-title')}
           </h3>
           <p>
-            Cada piercing é feito com todo o cuidado, utilizando materiais de
-            qualidade e técnicas seguras para garantir que a tua experiência
-            seja a melhor possível. Queremos que te sintas confortável e
-            confiante. Se estás a pensar em dar o próximo passo, entra de cabeça
-            nesse mundo que mistura arte, estilo e, claro, um bocadinho de
-            dorzinha.
+            {t('description')}
           </p>
         </motion.div>
         <div>
           <span className="border border-gray-700 p-2">
-            Temporariamente indisponível
+            {t('piercing-book-btn')}
           </span>
         </div>
 

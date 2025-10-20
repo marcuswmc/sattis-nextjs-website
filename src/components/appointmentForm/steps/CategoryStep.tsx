@@ -11,6 +11,7 @@ import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover
 import Link from "next/link";
 import { MessageCircle } from "lucide-react";
 import { Category } from "../types";
+import { useTranslations } from "next-intl";
 
 interface CategoryStepProps {
   categories: Category[];
@@ -27,17 +28,20 @@ export default function CategoryStep({
   onSelectCategory,
   onNext,
 }: CategoryStepProps) {
+
+  const t = useTranslations('book-form')
+
   return (
     <Card className="bg-black text-card-foreground border-none ">
       <CardHeader className="items-center">
         <CardTitle className="flex flex-col gap-4 text-foreground">
           <p className="text-lg font-medium leading-tight">
-            Selecione a área desejada para prosseguir com a marcação.
+            {t('category-step.title')}
           </p>
           <div className="flex items-center gap-2 text-black bg-white p-2 rounded-sm">
             <MessageCircle size={18} />
             <span className="font-light text-[10px]">
-              * Ao clicar em <span className="font-bold">Tattoo</span> será redirecionado para o atendimento via whatsapp.
+              * {t('category-step.note-message.f-line')} <span className="font-bold">{t('category-step.note-message.strong-text')}</span> {t('category-step.note-message.s-line')}
             </span>
           </div>
         </CardTitle>
@@ -98,7 +102,7 @@ export default function CategoryStep({
           onClick={onNext}
           disabled={!selectedCategory}
         >
-          Próximo
+          {t('form-btns.next-step-btn')}
         </Button>
       </CardContent>
     </Card>

@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/card";
 import { Category } from "../types";
 import { Professional, Service } from "@/hooks/appointments-context";
+import { useTranslations } from "next-intl";
 
 interface ConfirmationStepProps {
   categories: Category[];
@@ -37,45 +38,46 @@ export default function ConfirmationStep({
   customerEmail,
   customerPhone,
 }: ConfirmationStepProps) {
+  const t = useTranslations('book-form')
   return (
     <Card className="bg-black text-card-foreground border-none">
       <CardHeader>
         <CardTitle className="text-lg text-foreground text-center">
-          A marcação foi efetuada!
+          {t('confirmation-step.title')}
         </CardTitle>
       </CardHeader>
       <CardContent className="flex flex-col gap-2">
-        <p className="text-sm mb-2 text-muted-foreground">Resumo da marcação:</p>
+        <p className="text-sm mb-2 text-muted-foreground">{t('confirmation-step.summary')}</p>
         <p className="text-sm text-foreground">
-          <strong>Categoria:</strong> {categories.find((c) => c._id === selectedCategory)?.name}
+          <strong>{t('confirmation-step.category')}</strong> {categories.find((c) => c._id === selectedCategory)?.name}
         </p>
         <p className="text-sm text-foreground">
-          <strong>Serviço:</strong> {services.find((s) => s._id === selectedService)?.name}
+          <strong>{t('confirmation-step.service')}</strong> {services.find((s) => s._id === selectedService)?.name}
         </p>
         <p className="text-sm text-foreground">
-          <strong>Profissional:</strong> {professionals.find((p) => p._id === selectedProfessional)?.name}
+          <strong>{t('confirmation-step.professional')}</strong> {professionals.find((p) => p._id === selectedProfessional)?.name}
         </p>
         <p className="text-sm text-foreground">
-          <strong>Data:</strong> {date}
+          <strong>{t('confirmation-step.date')}</strong> {date}
         </p>
         <p className="text-sm text-foreground">
-          <strong>Hora:</strong> {time}
+          <strong>{t('confirmation-step.time')}</strong> {time}
         </p>
         <p className="text-sm text-foreground">
-          <strong>Nome:</strong> {customerName}
+          <strong>{t('confirmation-step.name')}</strong> {customerName}
         </p>
         <p className="text-sm text-foreground">
-          <strong>Email:</strong> {customerEmail}
+          <strong>{t('confirmation-step.email')}</strong> {customerEmail}
         </p>
         <p className="text-sm text-foreground">
-          <strong>Telefone:</strong> {customerPhone}
+          <strong>{t('confirmation-step.phone')}</strong> {customerPhone}
         </p>
       </CardContent>
       <CardFooter className="flex flex-col gap-2 items-start">
         <p className="text-sm text-muted-foreground">
-          *Não comparecimento sem aviso prévio de 24 horas ou atrasos superiores a 15 minutos será cobrado 30% do valor do procedimento que faltou para conseguir remarcar novamente.
+          *{t('confirmation-step.note-01')}
         </p>
-        <p className="text-sm text-muted-foreground">Para mais informações ou dúvidas, estamos à disposição!</p>
+        <p className="text-sm text-muted-foreground">{t('confirmation-step.note-02')}</p>
       </CardFooter>
     </Card>
   );
