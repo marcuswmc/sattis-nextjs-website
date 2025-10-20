@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Image from "next/image";
 import { Professional } from "@/hooks/appointments-context";
+import { useTranslations } from "next-intl";
 
 interface ProfessionalStepProps {
   professionals: Professional[];
@@ -20,12 +21,15 @@ export default function ProfessionalStep({
   onNext,
   onBack,
 }: ProfessionalStepProps) {
+
+  const t = useTranslations('book-form')
+
   return (
     <Card className="bg-black text-card-foreground border-none">
       <CardHeader className="items-center">
         <CardTitle className="flex flex-col gap-4 text-foreground ">
           <p className="text-lg font-medium leading-tight">
-            Agora escolha um dos profissionais disponíveis.
+           {t('professional-step.title')}
           </p>
         </CardTitle>
       </CardHeader>
@@ -66,14 +70,14 @@ export default function ProfessionalStep({
           onClick={onNext}
           disabled={!selectedProfessional}
         >
-          Próximo
+          {t('form-btns.next-step-btn')}
         </Button>
         <Button
           variant="ghost"
           className="mt-4 w-full text-foreground hover:bg-accent"
           onClick={onBack}
         >
-          Voltar
+          {t('form-btns.back-step-btn')}  
         </Button>
       </CardContent>
     </Card>

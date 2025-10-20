@@ -3,6 +3,7 @@
 import { Suspense } from "react";
 import SwiperSlider from "./swiperSlider";
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 
 const textVariants = {
   hidden: { opacity: 0, x: -50 },
@@ -15,6 +16,9 @@ const sliderVariants = {
 };
 
 export default function AboutSection() {
+
+  const t = useTranslations('about-section')
+
   return (
     <section className="pt-28 overflow-hidden w-full">
       <div className="flex flex-col md:flex-row gap-14 px-8 md:px-16 items-start md:items-center justify-between">
@@ -26,13 +30,12 @@ export default function AboutSection() {
           viewport={{ once: true, amount: 0.3 }}
         >
           <h2 className="text-4xl">
-            Transformamos
-            <br /> estilo em <span className="font-medium">expressão</span>.
+            {t('f-line-title')}
+            <br /> {t('s-line-title')} <span className="font-medium">{t('t-line-title')}</span>
           </h2>
 
           <p className="text-md">
-            Cuidamos do seu estilo com precisão e arte, elevando cada detalhe
-            para refletir a sua identidade única.
+            {t('subtitle')}
           </p>
         </motion.div>
       </div>

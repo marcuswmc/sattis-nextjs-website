@@ -2,19 +2,32 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { Button } from "../ui/button";
 
-const links = [
-  { name: "Início", path: "#inicio" },
-  { name: "Barbearia", path: "#barbearia" },
-  { name: "Tattoo", path: "#tattoos" },
-  // { name: "Estética", path: "#estetica" },
-  { name: "Piercings", path: "#piercings" },
-];
+import { useTranslations } from "next-intl";
 
 export default function DesktopNav() {
   const [activeSection, setActiveSection] = useState("");
 
-  const handleScroll = (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>, targetId: string) => {
+  const t = useTranslations('navLinks')
+
+  const linkKeys = [
+    "home",
+    "barbershop",
+    "tattoo",
+    "piercings"
+  ];
+
+  const navLinks = linkKeys.map((key) => ({
+    key,
+    name: t(`${key}.name`),
+    path: t(`${key}.path`)
+  }))
+
+  const handleScroll = (
+    event: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
+    targetId: string
+  ) => {
     event.preventDefault();
     const section = document.querySelector(targetId);
     if (section) {
@@ -26,14 +39,18 @@ export default function DesktopNav() {
     const handleScrollSpy = () => {
       const scrollPosition = window.scrollY;
 
-      links.forEach(({ path }) => {
+      navLinks.forEach(({ path }) => {
         if (path.startsWith("#")) {
           const section = document.querySelector(path);
           if (section) {
-            const offsetTop = section.getBoundingClientRect().top + window.scrollY;
+            const offsetTop =
+              section.getBoundingClientRect().top + window.scrollY;
             const offsetBottom = offsetTop + section.clientHeight;
-            
-            if (scrollPosition >= offsetTop - 200 && scrollPosition < offsetBottom - 10) {
+
+            if (
+              scrollPosition >= offsetTop - 200 &&
+              scrollPosition < offsetBottom - 10
+            ) {
               setActiveSection(path);
             }
           }
@@ -47,18 +64,16 @@ export default function DesktopNav() {
 
   return (
     <nav className="flex gap-8">
-      {links.map((link, index) => (
+      {navLinks.map(({key, name, path}) => (
         <Link
-          href={link.path}
-          key={index}
-          onClick={(event) => handleScroll(event, link.path)}
+          href={path}
+          key={key}
+          onClick={(event) => handleScroll(event, path)}
           className={`${
-            activeSection === link.path
-              ? "font-medium"
-              : "font-normal"
+            activeSection === path ? "font-medium" : "font-normal"
           } text-white font-normal text-md cursor-pointer`}
         >
-          {link.name}
+          {name}
         </Link>
       ))}
     </nav>

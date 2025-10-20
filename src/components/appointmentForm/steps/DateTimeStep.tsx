@@ -12,6 +12,7 @@ import { pt } from "date-fns/locale";
 import { format } from "date-fns";
 import { MessageCircle } from "lucide-react";
 import { RefObject } from "react";
+import { useTranslations } from "next-intl";
 
 interface DateTimeStepProps {
   formDate: string;
@@ -38,17 +39,20 @@ export default function DateTimeStep({
   onNext,
   onBack,
 }: DateTimeStepProps) {
+
+  const t = useTranslations('book-form')
+
   return (
     <Card className="bg-black text-card-foreground border-none">
       <CardHeader>
         <CardTitle className="flex flex-col gap-4 text-foreground ">
           <p className="text-lg font-medium leading-tight">
-            Escolha uma data e horário. <br/>
+            {t('date-time-step.title')} <br/>
           </p>
           <div className="flex items-center gap-2 text-black bg-white p-2 rounded-sm">
             <MessageCircle size={18} />
             <p className="font-light text-[10px]">
-              Escolha o dia e em seguida defina o horário de sua preferência.
+              {t('date-time-step.note-message')}
             </p>
           </div>
         </CardTitle>
@@ -97,7 +101,7 @@ export default function DateTimeStep({
                 ))
               ) : (
                 <p className="text-sm text-muted-foreground">
-                  Nenhum horário disponível para esta data.
+                  {t('date-time-step.no-time-message')}
                 </p>
               )}
             </div>
@@ -109,14 +113,14 @@ export default function DateTimeStep({
           onClick={onNext}
           disabled={!selectedTime || !formDate}
         >
-          Próximo
+          {t('form-btns.next-step-btn')}
         </Button>
         <Button
           variant="ghost"
           className="mt-4 w-full text-foreground hover:bg-accent"
           onClick={onBack}
         >
-          Voltar
+       {t('form-btns.back-step-btn')}
         </Button>
       </CardContent>
     </Card>

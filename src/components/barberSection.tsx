@@ -8,6 +8,7 @@ import { Button } from "./ui/button";
 import { Calendar } from "lucide-react";
 import FormModal from "./formModal";
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 
 const containerVariants = {
   hidden: {},
@@ -26,6 +27,7 @@ const itemVariantsRight = {
 
 export default function BarberSection() {
   const [showForm, setShowForm] = useState(false);
+  const t = useTranslations('barbershop-section')
 
   return (
     <motion.section
@@ -44,7 +46,7 @@ export default function BarberSection() {
           className="w-full h-full object-cover object-center"
         />
         <span className="absolute bottom-5 left-5 text-white text-6xl">
-          Barbearia
+          {t('section-title')}
         </span>
       </motion.div>
 
@@ -55,11 +57,11 @@ export default function BarberSection() {
       >
         <motion.div variants={itemVariantsRight} className="flex flex-col gap-5">
           <h3 className="text-3xl">
-            Aqui, a tradição <br />
-            encontra a modernidade.
+            {t('f-line-title')} <br />
+            {t('s-line-title')}
           </h3>
           <p>
-            Na nossa barbearia, cada corte de cabelo, barba ou estilo é pensado para realçar a sua personalidade e garantir que você saia com a melhor versão de si mesmo.
+            {t('description')}
           </p>
         </motion.div>
 
@@ -67,31 +69,31 @@ export default function BarberSection() {
           <div className="flex flex-col gap-5 md:gap-0 md:flex-row md:items-center">
             <div className="flex gap-5 items-center w-full md:w-[50%]">
               <Image src={checkIc} alt="service-icon" />
-              <p className="uppercase">Corte Cabelo</p>
+              <p className="uppercase">{t('service-01')}</p>
             </div>
             <div className="flex gap-5 items-center w-full md:w-[50%]">
               <Image src={checkIc} alt="service-icon" />
-              <p className="uppercase">Barba Premium</p>
-            </div>
-          </div>
-          <div className="flex flex-col gap-5 md:gap-0 md:flex-row md:items-center">
-            <div className="flex gap-5 items-center w-full md:w-[50%]">
-              <Image src={checkIc} alt="service-icon" />
-              <p className="uppercase">Cabelo Longo</p>
-            </div>
-            <div className="flex gap-5 items-center w-full md:w-[50%]">
-              <Image src={checkIc} alt="service-icon" />
-              <p className="uppercase">Cabelo & Barba</p>
+              <p className="uppercase">{t('service-02')}</p>
             </div>
           </div>
           <div className="flex flex-col gap-5 md:gap-0 md:flex-row md:items-center">
             <div className="flex gap-5 items-center w-full md:w-[50%]">
               <Image src={checkIc} alt="service-icon" />
-              <p className="uppercase">Barba</p>
+              <p className="uppercase">{t('service-03')}</p>
             </div>
             <div className="flex gap-5 items-center w-full md:w-[50%]">
               <Image src={checkIc} alt="service-icon" />
-              <p className="uppercase">Cabelo & Barba Premium</p>
+              <p className="uppercase">{t('service-04')}</p>
+            </div>
+          </div>
+          <div className="flex flex-col gap-5 md:gap-0 md:flex-row md:items-center">
+            <div className="flex gap-5 items-center w-full md:w-[50%]">
+              <Image src={checkIc} alt="service-icon" />
+              <p className="uppercase">{t('service-05')}</p>
+            </div>
+            <div className="flex gap-5 items-center w-full md:w-[50%]">
+              <Image src={checkIc} alt="service-icon" />
+              <p className="uppercase">{t('service-06')}</p>
             </div>
           </div>
         </motion.div>
@@ -102,7 +104,7 @@ export default function BarberSection() {
             className="mt-5 text-md border-black text-black cursor-pointer"
             onClick={() => setShowForm(true)}
           >
-            Marcar horário <Calendar />
+            {t('barbershop-book-btn')} <Calendar />
           </Button>
         </motion.div>
       </motion.div>

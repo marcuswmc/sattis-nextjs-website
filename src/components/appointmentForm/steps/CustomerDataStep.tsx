@@ -10,6 +10,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Loader2, MessageCircle } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 interface CustomerDataStepProps {
   customerName: string;
@@ -36,17 +37,20 @@ export default function CustomerDataStep({
   onBack,
   loading,
 }: CustomerDataStepProps) {
+
+  const t = useTranslations('book-form')
+
   return (
     <Card className="bg-black text-card-foreground border-none">
       <CardHeader>
         <CardTitle className="flex flex-col gap-4 text-foreground ">
           <p className="text-lg font-medium leading-tight">
-            Preencha com seus dados para confirmar a sua marcação
+            {t('customer-data-step.title')}
           </p>
           <div className="flex items-center gap-2 text-black bg-white p-2 rounded-sm">
             <MessageCircle size={18} />
             <span className="font-light text-[10px]">
-              Os seus dados são importantes para confirmar a marcação e também para notificações caso seja necessário.
+              {t('customer-data-step.note-message')}
             </span>
           </div>
         </CardTitle>
@@ -54,7 +58,7 @@ export default function CustomerDataStep({
       <CardContent>
         <div className="space-y-6">
           <div className="space-y-2">
-            <Label className="text-foreground">Nome Completo*</Label>
+            <Label className="text-foreground">{t('customer-data-step.form-inputs.fname')}*</Label>
             <Input
               type="text"
               value={customerName}
@@ -68,7 +72,7 @@ export default function CustomerDataStep({
             )}
           </div>
           <div className="space-y-2">
-            <Label className="text-foreground">Email*</Label>
+            <Label className="text-foreground">{t('customer-data-step.form-inputs.email')}*</Label>
             <Input
               type="email"
               value={customerEmail}
@@ -82,7 +86,7 @@ export default function CustomerDataStep({
             )}
           </div>
           <div className="space-y-2">
-            <Label className="text-foreground">Telefone*</Label>
+            <Label className="text-foreground">{t('customer-data-step.form-inputs.phone')}*</Label>
             <Input
               type="text"
               value={customerPhone}
@@ -103,7 +107,7 @@ export default function CustomerDataStep({
           {loading ? (
             <Loader2 className="h-10 w-10 animate-spin text-primary-foreground" />
           ) : (
-            "Confirmar Marcação"
+            `${t('form-btns.confirm-book-btn')}`
           )}
         </Button>
         <Button
@@ -111,7 +115,7 @@ export default function CustomerDataStep({
           className="mt-4 w-full text-foreground hover:bg-accent"
           onClick={onBack}
         >
-          Voltar
+          {t('form-btns.back-step-btn')}
         </Button>
       </CardContent>
     </Card>

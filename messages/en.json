@@ -1,0 +1,123 @@
+{
+  "navLinks": {
+    "home": {
+      "name": "Home",
+      "path": "#inicio"
+    },
+    "barbershop": {
+      "name": "Barbershop",
+      "path": "#barbearia"
+    },
+    "tattoo": {
+      "name": "Tattoos",
+      "path": "#tattoos"
+    },
+    "piercings": {
+      "name": "Piercings",
+      "path": "#piercings"
+    }
+  },
+  "breath-sections": {
+    "section-01": {
+      "f-line-text": "Discover the perfect blend of",
+      "s-line-text": "style,",
+      "t-line-text": "art and care."
+    },
+    "section-02": {
+      "f-line-text": "More than tattoos and piercings,",
+      "s-line-text": "we express your identity"
+    }
+  },
+  "hero": {
+    "book-now-btn": "Book now"
+  },
+  "about-section": {
+    "f-line-title": "We transform ",
+    "s-line-title": "style into",
+    "t-line-title": "expression.",
+    "subtitle": "We take care of your style with precision and artistry, elevating every detail to reflect your unique identity.",
+    "slide-btn-text": "See more styles"
+  },
+  "barbershop-section": {
+    "section-title": "Barbershop",
+    "f-line-title": "Where tradition",
+    "s-line-title": "meets modern style.",
+    "description": "Every haircut, beard trim, and style at our barbershop is designed to bring out your personality — so you leave feeling like your best self.",
+    "service-01": "Hair Cut",
+    "service-02": "Long hair",
+    "service-03": "Hair & Beard",
+    "service-04": "Beard",
+    "service-05": "Beard Premium",
+    "service-06": "Hair & Beard Premium",
+    "barbershop-book-btn": "Book now"
+  },
+  "tattoo-section": {
+    "section-title": "Tattoo",
+    "f-line-title": "So much more",
+    "s-line-title": "than just ink",
+    "t-line-title": "on skin.",
+    "description": "It's a unique form of expression. Every line tells a story. Whether you're thinking about your first tattoo or adding another piece to your collection, get ready for an experience that goes far beyond the needle.",
+    "professional-name": "Lou Lopes",
+    "tattoo-book-btn": "Get a quote"
+  },
+  "piercing-section": {
+    "section-title": "Piercings",
+    "f-line-title": "Style and attitude",
+    "s-line-title": "in every detail.",
+    "description": "Every piercing is done with care, using high-quality materials and safe techniques to ensure the best possible experience. We want you to feel comfortable and confident. If you're thinking about taking the next step, dive headfirst into this world where art, style, and yes, a little pinch of pain, come together.",
+    "piercing-book-btn": "Temporarily unavailable"
+  },
+  "footer-btns": {
+    "book-btn": "Book now",
+    "contact-btn": "Get in touch"
+  },
+  "book-form": {
+    "category-step": {
+      "title": "Select the desired service to proceed with the booking.",
+      "note-message": {
+        "f-line": "By clicking on",
+        "strong-text": "Tattoo",
+        "s-line": "you will be redirected to WhatsApp."
+      }
+    },
+    "service-step": {
+      "title": "Now choose one of the available services."
+    },
+    "professional-step": {
+      "title": "Now select one of the available professionals."
+    },
+    "date-time-step": {
+      "title": "Choose a date and time.",
+      "note-message": "Choose the day and then set your preferred time.",
+      "no-time-message": "No available times for this date."
+    },
+    "customer-data-step": {
+      "title": "Fill in your details to confirm your booking",
+      "note-message": "Your details are important to confirm the booking and also for notifications if necessary.",
+      "form-inputs": {
+        "fname": "Full Name",
+        "email": "Email",
+        "phone": "Phone"
+      }
+    },
+    "confirmation-step": {
+      "title": "The booking has been successfully made!",
+      "summary": "Booking Summary:",
+      "category": "Category:",
+      "service": "Service:",
+      "professional": "Professional:",
+      "date": "Date:",
+      "time": "Time:",
+      "name": "Name:",
+      "email": "Email:",
+      "phone": "Phone:",
+      "note-01": "No-shows without 24 hours' notice or delays exceeding 15 minutes will be charged 30% of the cost of the missed procedure in order to rebook.",
+      "note-02": "For more information or questions, please contact us! / For more information or questions, we are at your disposal!"
+    },
+    "form-btns": {
+      "next-step-btn": "Continue",
+      "back-step-btn": "Back",
+      "confirm-book-btn": "Confirm Booking"
+    }
+  }
+}

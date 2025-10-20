@@ -6,6 +6,7 @@ import { Button } from "./ui/button";
 import { MessageCircle, Instagram } from "lucide-react";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 
 const containerVariants = {
   hidden: {},
@@ -23,6 +24,9 @@ const itemVariantsRight = {
 };
 
 export default function TattooSection() {
+
+  const t = useTranslations('tattoo-section')
+
   return (
     <motion.section
       variants={containerVariants}
@@ -38,7 +42,7 @@ export default function TattooSection() {
       >
         <Image src={tattooSectionImg} alt="Tattoo" quality={100} className="w-full h-full object-cover object-center" />
         <span className="absolute bottom-5 left-5 text-white text-6xl">
-          Tattoo
+          {t('section-title')}
         </span>
       </motion.div>
 
@@ -52,16 +56,13 @@ export default function TattooSection() {
           className="flex flex-col gap-5"
         >
           <h3 className="text-3xl">
-            Muito mais do que
+            {t('f-line-title')}
             <br />
-            um simples desenho
-            <br /> na pele.
+            {t('s-line-title')}
+            <br /> {t('t-line-title')}
           </h3>
           <p>
-            É uma forma de expressão única. Cada linha tem uma história. Se
-            estás a pensar em fazer a tua primeira tattoo ou até a acrescentar
-            mais uma à tua coleção, prepara-te para mergulhar numa experiência
-            que vai muito além da agulha.
+            {t('description')}
           </p>
         </motion.div>
 
@@ -77,7 +78,7 @@ export default function TattooSection() {
                 className="mt-5 text-md border-black text-black cursor-pointer"
               >
                 <Link href={"https://wa.me/351964935644"} target="_blank">
-                  Orçamentos <MessageCircle />
+                  {t('tattoo-book-btn')} <MessageCircle />
                 </Link>
               </Button>
               <Button

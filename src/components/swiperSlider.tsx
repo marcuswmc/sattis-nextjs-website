@@ -9,16 +9,19 @@ import { SwiperData } from "@/data/swipeImgs";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 
 import { useRef } from "react";
+import { useTranslations } from "next-intl";
 
 const imgsData = SwiperData;
 
 export default function SwiperSlider() {
   const swiperRef = useRef<SwiperCore | null >(null);
 
+  const t = useTranslations('about-section')
+
   return (
     <div className="w-full flex flex-col md:flex-row items-end md:items-end gap-8">
       <div className="flex flex-col items-end md:items-start gap-5 md:w-[20%] order-2 md:order-first pr-8">
-        <p className="text-2xl">Veja mais estilos</p>
+        <p className="text-2xl">{t('slide-btn-text')}</p>
         <div className="flex gap-2">
           <button
             className="w-[44px] h-[44px] border border-black bg-transparent text-primary text-[22px] flex justify-center items-center transition-all rounded-lg cursor-pointer"
