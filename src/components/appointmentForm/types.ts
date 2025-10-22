@@ -30,7 +30,7 @@ const phoneRegex = new RegExp(
 export const useAppointmentSchema = () => {
   const t = useTranslations("book-form.customer-data-step");
 
-  return useMemo(() => z.object({
+  return z.object({
     customerName: z
       .string()
       .min(2, { message: t('validate-input.customer-name') }),
@@ -50,5 +50,5 @@ export const useAppointmentSchema = () => {
     serviceId: z.string().min(1, { message: "Selecione um serviço" }),
     professionalId: z.string().min(1, { message: "Selecione um profissional" }),
     time: z.string().min(1, { message: "Selecione um horário" }),
-  }), [t]);
+  });
 };
