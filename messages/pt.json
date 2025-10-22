@@ -72,6 +72,15 @@
     "contact-btn": "Fale Connosco"
   },
   "book-form": {
+    "validate-steps-msgs": {
+      "selected-category": "Selecione uma categoria",
+      "selected-service": "Selecione um serviço",
+      "selected-professional": "Selecione um profissional",
+      "selected-date": "Selecione uma data",
+      "selected-time": "Selecione um horário",
+      "create-success": "Agendamento realizado com sucesso!",
+      "create-error": "Erro ao agendar. Tente novamente!"
+    },
     "category-step": {
       "title": "Selecione a área desejada para prosseguir com a marcação.",
       "note-message": {
@@ -98,6 +107,11 @@
         "fname": "Nome Completo",
         "email": "Email",
         "phone": "Telefone"
+      },
+      "validate-input": {
+        "customer-name": "Nome deve ter pelo menos 2 caracteres",
+        "customer-email": "Email inválido",
+        "customer-phone": "Telefone deve ter 8 ou 11 dígitos"
       }
     },
     "confirmation-step": {

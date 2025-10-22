@@ -72,6 +72,15 @@
     "contact-btn": "Get in touch"
   },
   "book-form": {
+    "validate-steps-msgs": {
+      "selected-category": "Select a category",
+      "selected-service": "Select a service",
+      "selected-professional": "Select a professional",
+      "selected-date": "Select a date",
+      "selected-time": "Select a time",
+      "create-success": "Booking created successfully!",
+      "create-error": "Error creating booking. Please try again!"
+    },
     "category-step": {
       "title": "Select the desired service to proceed with the booking.",
       "note-message": {
@@ -98,6 +107,11 @@
         "fname": "Full Name",
         "email": "Email",
         "phone": "Phone"
+      },
+      "validate-input": {
+        "customer-name": "Name must have at least 2 characters",
+        "customer-email": "Invalid email",
+        "customer-phone": "Phone must have 8 or 11 digits"
       }
     },
     "confirmation-step": {
