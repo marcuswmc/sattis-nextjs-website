@@ -8,9 +8,10 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { Euro, Hourglass } from "lucide-react";
+import { Euro, Hourglass, MessageCircle } from "lucide-react";
 import { Service } from "@/hooks/appointments-context";
 import { useTranslations } from "next-intl";
+import Link from "next/link";
 
 interface ServiceStepProps {
   services: Service[];
@@ -30,7 +31,7 @@ export default function ServiceStep({
 {
   const t = useTranslations('book-form')
   return (
-    <Card className="bg-black text-card-foreground border-none">
+    <Card className="bg-black text-card-foreground border-none p-0">
       <CardHeader className="items-center">
         <CardTitle className="flex flex-col gap-4 text-foreground">
           <p className="text-lg font-medium leading-tight">
@@ -53,9 +54,9 @@ export default function ServiceStep({
               >
                 <div className="w-full flex flex-col gap-2 items-start">
                   <div className="flex flex-col items-start gap-2">
-                    <div className="text-md">{service.name}</div>
+                    <div className="text-md text-wrap text-start line-clamp-3">{service.name}</div>
                     <div className="text-[10px] font-light">
-                      <p className="text-wrap text-start line-clamp-3">
+                      <p className="text-wrap text-start line-clamp-2">
                         {service.description}
                       </p>
                     </div>
@@ -71,6 +72,23 @@ export default function ServiceStep({
                 </div>
               </Button>
             ))}
+            <Button
+                key={"colour-service-01"}
+                className={`py-12 px-4 bg-gray-900 text-foreground rounded-md border border-border hover:bg-accent hover:text-accent-foreground`}
+              >
+                <Link href={"https://wa.me/351915003454"} target="_blank" className="w-full flex flex-col gap-2 items-start">
+                  <div className="flex flex-col items-start gap-2">
+                    <div className="text-md text-wrap text-start line-clamp-2">Coloração</div>
+                    <div className="text-[10px] font-light">
+                      <p className="text-wrap text-start line-clamp-2">
+                      Apenas por consulta (Whatsapp)
+                      </p>
+                    </div>
+                  </div>
+
+                </Link>
+              </Button>
+
           </div>
         </ScrollArea>
         <Button

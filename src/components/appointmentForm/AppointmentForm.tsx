@@ -79,7 +79,7 @@ export default function AppointmentForm() {
   };
 
   return (
-    <div className="flex w-full md:w-lg rounded-md flex-col justify-center bg-black text-foreground dark pt-2">
+    <div className="flex w-full md:w-lg rounded-md flex-col justify-center text-foreground dark pt-2">
       <AnimatePresence mode="wait">
         {step === 1 && (
           <motion.div
