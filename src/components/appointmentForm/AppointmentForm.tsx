@@ -150,7 +150,7 @@ export default function AppointmentForm() {
             <DateTimeStep
               formDate={formData.date}
               onChangeDate={handleDateChange}
-              isDateDisabled={isDateDisabled}
+              isDateDisabled={(date) => isDateDisabled(date, [], professionals?.find(p => p._id === selectedProfessional)?.name)}
               availableTimes={availableTimes}
               loadingTimes={loadingTimes}
               selectedTime={selectedTime}
