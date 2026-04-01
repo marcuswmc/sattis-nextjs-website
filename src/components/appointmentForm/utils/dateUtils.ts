@@ -2,11 +2,8 @@ import { format } from "date-fns";
 
 const ALLOWED_MONDAY = ["2025-12-22", "2025-12-29"];
 const BLOCKED_DAYS = [
-  "2026-02-17",
-  "2026-02-18",
-  "2026-02-19",
-  "2026-02-20",
-  "2026-02-21",
+  "2026-04-25",
+  "2026-05-02",
 ];
 
 export function isDateDisabled(
@@ -18,19 +15,13 @@ export function isDateDisabled(
   const isAllowedMonday =
     ALLOWED_MONDAY.includes(formattedDate) && date.getDay() === 1;
 
-  // Só bloqueia os dias fixos se o profissional for a Paulinha
-  const allBlockedDays =
-    professionalName === "Paulinha"
-      ? [...BLOCKED_DAYS, ...blockedDates]
-      : blockedDates;
-
   // Bloqueia domingos (0) e segundas (1), exceto a segunda específica
   if (!isAllowedMonday && (date.getDay() === 0 || date.getDay() === 1)) {
     return true;
   }
 
   // Datas bloqueadas manualmente
-  if (allBlockedDays.includes(formattedDate)) {
+  if (BLOCKED_DAYS.includes(formattedDate)) {
     return true;
   }
 
