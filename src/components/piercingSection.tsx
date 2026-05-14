@@ -68,21 +68,15 @@ export default function PiercingSection() {
             {t('description')}
           </p>
         </motion.div>
-        <div>
-          <span className="border border-gray-700 p-2">
-            {t('piercing-book-btn')}
-          </span>
-        </div>
 
-        {/*  
         <motion.div variants={itemVariantsRight} className="flex gap-5">
           <Button
             asChild
             variant="outline"
             className="mt-5 text-md border-black text-black cursor-pointer"
           >
-            <Link href={"https://wa.me/351913534380"} target="_blank">
-              Orçamentos <MessageCircle />
+            <Link href={"https://wa.me/351915335220"} target="_blank">
+            {t('piercing-book-btn')} <MessageCircle />
             </Link>
           </Button>
           <Button
@@ -95,7 +89,7 @@ export default function PiercingSection() {
             </Link>
           </Button>
         </motion.div>
-        */}
+
       </motion.div>
     </motion.section>
   );

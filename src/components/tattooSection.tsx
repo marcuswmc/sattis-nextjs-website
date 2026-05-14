@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import tattooSectionImg from "@/data/imgs/img-section-02.jpg";
+import tattooSectionImg from "@/data/imgs/img-section-tattoo.jpeg";
 import { Button } from "./ui/button";
 import { MessageCircle, Instagram } from "lucide-react";
 import { motion } from "framer-motion";
@@ -68,16 +68,13 @@ export default function TattooSection() {
 
         <motion.div variants={itemVariantsRight} className="flex flex-col gap-6">
           <div className="flex flex-col md:items-baseline md:gap-2">
-            <div>
-              <p className="font-medium text-xl">Lou Lopes: </p>
-            </div>
             <div className="flex items-center">
               <Button
                 asChild
                 variant="outline"
                 className="mt-5 text-md border-black text-black cursor-pointer"
               >
-                <Link href={"https://wa.me/351964935644"} target="_blank">
+                <Link href={"https://wa.me/351915335220"} target="_blank">
                   {t('tattoo-book-btn')} <MessageCircle />
                 </Link>
               </Button>
@@ -87,7 +84,7 @@ export default function TattooSection() {
                 className="mt-5 text-md border-black text-black cursor-pointer"
               >
                 <Link
-                  href={"https://www.instagram.com/loulopes_tattoo"}
+                  href={"https://www.instagram.com/sattis_studio/"}
                   target="_blank"
                 >
                   Instagram <Instagram />
