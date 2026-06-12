@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import Image from "next/image";
+
 import { Professional } from "@/hooks/appointments-context";
 import { useTranslations } from "next-intl";
 
@@ -34,32 +34,35 @@ export default function ProfessionalStep({
         </CardTitle>
       </CardHeader>
       <CardContent>
-        <div className="grid gap-3">
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-3">
           {professionals.map((pro) => (
             <Button
               key={pro._id}
               variant="outline"
-              className={`text-foreground bg-gray-900 border-border hover:bg-accent hover:text-accent-foreground h-[80px] px-0 text-md overflow-hidden ${
+              aria-label={pro.name}
+              className={`relative text-foreground bg-gray-900 border-border hover:bg-accent hover:text-accent-foreground px-0 text-md h-[140px] overflow-hidden rounded-md p-0 ${
                 selectedProfessional === pro._id
-                  ? "bg-gray-500 text-accent-foreground hover:bg-gray-500"
+                  ? "ring-2 ring-accent"
                   : ""
               }`}
               onClick={() => onSelectProfessional(pro._id)}
             >
-              <div className="flex justify-between w-full items-center">
-                <div className="pl-4 flex flex-col items-start gap-0.5">
-                  {pro.name}
-                </div>
+              <div
+                className="w-full h-full rounded-md overflow-hidden relative"
+                style={{
+                  backgroundImage: `url(${pro.image})`,
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                  maxWidth: "360px",
+                  width: "100%",
+                }}
+              >
+                <div className="absolute inset-0 bg-black/0" />
 
-                <div>
-                  <Image
-                    src={pro.image}
-                    alt={pro.name}
-                    width={60}
-                    height={60}
-                    className="rounded-r-md object-contain"
-                    quality={100}
-                  />
+                <div className="absolute left-0 right-0 bottom-0 h-1/3 bg-gradient-to-t from-black/80 to-transparent" />
+
+                <div className="absolute bottom-3 left-4 text-white text-lg font-medium drop-shadow-md">
+                  {pro.name}
                 </div>
               </div>
             </Button>
