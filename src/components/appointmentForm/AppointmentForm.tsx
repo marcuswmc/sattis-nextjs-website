@@ -6,7 +6,7 @@ import { useAppointments } from "@/hooks/appointments-context";
 import { useCategories } from "./hooks/useCategories";
 import { useAppointmentForm } from "./hooks/useAppointmentForm";
 import { useAvailability } from "./hooks/useAvailability";
-import { isDateDisabled } from "./utils/dateUtils";
+import { isDateDisabled, getFilteredTimes } from "./utils/dateUtils";
 import CategoryStep from "./steps/CategoryStep";
 import ServiceStep from "./steps/ServiceStep";
 import ProfessionalStep from "./steps/ProfessionalStep";
@@ -59,6 +59,13 @@ export default function AppointmentForm() {
     professionalId: selectedProfessional,
     date: formData.date,
   });
+
+  const selectedProfessionalName = professionals?.find((p) => p._id === selectedProfessional)?.name;
+  const filteredAvailableTimes = getFilteredTimes(
+    availableTimes,
+    selectedProfessionalName,
+    formData.date
+  );
 
   // Inicializa dados necessários
   useEffect(() => {
@@ -151,7 +158,7 @@ export default function AppointmentForm() {
               formDate={formData.date}
               onChangeDate={handleDateChange}
               isDateDisabled={(date) => isDateDisabled(date, [], professionals?.find(p => p._id === selectedProfessional)?.name)}
-              availableTimes={availableTimes}
+              availableTimes={filteredAvailableTimes}
               loadingTimes={loadingTimes}
               selectedTime={selectedTime}
               onSelectTime={setSelectedTime}
