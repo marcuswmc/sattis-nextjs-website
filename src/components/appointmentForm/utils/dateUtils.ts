@@ -4,6 +4,7 @@ import filterAvailableTimes, { TimeRule } from "./availableTimeUtils";
 const ALLOWED_MONDAY = ["2026-06-22"];
 const BLOCKED_DAYS = ["2026-06-24"];
 const ANDRE_BLOCKED_DAYS = ["2026-06-20", "2026-06-24", "2026-10-03"];
+const JI_BLOCKED_DAYS = ["2026-07-01", "2026-07-02"];
 
 export function isDateDisabled(
   date: Date,
@@ -19,13 +20,22 @@ export function isDateDisabled(
     return true;
   }
 
-  const professionalBlockedDays =
+  const andreBlockedDays =
     professionalName === "André"
       ? [...ANDRE_BLOCKED_DAYS, ...blockedDates]
       : [...BLOCKED_DAYS];
 
+  const jiBlockedDays =
+    professionalName === "Ji"
+      ? [...JI_BLOCKED_DAYS, ...blockedDates]
+      : [...BLOCKED_DAYS];
+
   // Datas bloqueadas manualmente
-  if (professionalBlockedDays.includes(formattedDate)) {
+  if (andreBlockedDays.includes(formattedDate)) {
+    return true;
+  }
+
+  if (jiBlockedDays.includes(formattedDate)) {
     return true;
   }
 
