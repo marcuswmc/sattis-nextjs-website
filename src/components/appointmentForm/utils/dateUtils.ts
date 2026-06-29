@@ -67,13 +67,13 @@ export function getFilteredTimes(
 
   // Default rules per professional. Adjust or extend as needed.
   const PROFESSIONAL_DEFAULT_RULES: Record<string, TimeRule[]> = {
-     /*André: [
+     Ji: [
       {
-        professional: "André",
-        allowRanges: [{ from: "09:30", to: "12:30" }],
-        days: ["2026-06-22"],
+        professional: "Ji",
+        blockRanges: [{ from: "14:30", to: "17:00" }],
+        days: ["2026-06-30"],
       },
-    ],*/
+    ],
   }; 
 
   const defaults = professionalName
