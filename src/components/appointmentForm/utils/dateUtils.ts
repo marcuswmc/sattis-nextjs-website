@@ -5,6 +5,7 @@ const ALLOWED_MONDAY = ["2026-06-22"];
 const BLOCKED_DAYS = ["2026-06-24"];
 const ANDRE_BLOCKED_DAYS = ["2026-06-20", "2026-06-24", "2026-10-03"];
 const JI_BLOCKED_DAYS = ["2026-07-01", "2026-07-02"];
+const PAULINHA_BLOCKED_DAYS = ["2026-07-18"];
 
 export function isDateDisabled(
   date: Date,
@@ -30,12 +31,21 @@ export function isDateDisabled(
       ? [...JI_BLOCKED_DAYS, ...blockedDates]
       : [...BLOCKED_DAYS];
 
+  const paulinhaBlockedDays =
+    professionalName === "Paulinha"
+      ? [...PAULINHA_BLOCKED_DAYS, ...blockedDates]
+      : [...BLOCKED_DAYS];
+
   // Datas bloqueadas manualmente
   if (andreBlockedDays.includes(formattedDate)) {
     return true;
   }
 
   if (jiBlockedDays.includes(formattedDate)) {
+    return true;
+  }
+
+  if (paulinhaBlockedDays.includes(formattedDate)) {
     return true;
   }
 
@@ -70,10 +80,22 @@ export function getFilteredTimes(
      Ji: [
       {
         professional: "Ji",
-        blockRanges: [{ from: "14:30", to: "17:00" }],
+        blockRanges: [{ from: "14:30", to: "19:45" }],
         days: ["2026-06-30"],
       },
     ],
+    Paulinha: [
+      {
+        professional: "Paulinha",
+        blockRanges: [{ from: "14:30", to: "19:45" }],
+        days: ["2026-07-17"],
+      },
+      {
+        professional: "Paulinha",
+        blockRanges: [{ from: "14:30", to: "19:45" }],
+        days: ["2026-07-17"],
+      },
+    ]
   }; 
 
   const defaults = professionalName
