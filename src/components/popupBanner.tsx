@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { X } from "lucide-react";
 
-const INSTAGRAM_URL = "https://www.instagram.com/sattis_studio/";
+const WHATSAPP_URL = "https://wa.me/5511947770426";
 
 export default function PopupBanner() {
   const [visible, setVisible] = useState(false);
@@ -34,7 +34,7 @@ export default function PopupBanner() {
           fechar <X size={14} />
         </button>
 
-        <Link href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer">
+        <Link href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
           <Image
             src="/imgs/popup.jpeg"
             alt="Agenda Aberta - Porto, Portugal"

@@ -68,11 +68,30 @@ export default function TattooSection() {
 
         <motion.div variants={itemVariantsRight} className="flex flex-col gap-6">
           <div className="flex flex-col md:items-baseline md:gap-2">
+            <div className="flex flex-col gap-2 border-l-2 border-black pl-4">
+            <p className="text-sm font-semibold uppercase tracking-wide">Brenda Turin — Guest</p>
+            <p className="text-sm text-gray-600">
+              A Brenda estará a tatuar como convidada na Sattis Studio por tempo limitado.
+              Aproveita para marcares a tua sessão com ela diretamente.
+            </p>
+            <Button
+              asChild
+              variant="outline"
+              className="mt-2 text-md border-black text-black cursor-pointer w-fit"
+            >
+              <Link href={"https://wa.me/5511947770426"} target="_blank">
+                Orçamento Brenda <MessageCircle />
+              </Link>
+            </Button>
+          </div>
+          <div className="mt-10">
+            <p className="text-sm font-semibold uppercase tracking-wide">Tati Zaqui - Tattoo & piercing</p>
+          </div>
             <div className="flex items-center">
               <Button
                 asChild
                 variant="outline"
-                className="mt-5 text-md border-black text-black cursor-pointer"
+                className="mt-2 text-md border-black text-black cursor-pointer"
               >
                 <Link href={"https://wa.me/351915335220"} target="_blank">
                   {t('tattoo-book-btn')} <MessageCircle />
@@ -81,7 +100,7 @@ export default function TattooSection() {
               <Button
                 asChild
                 variant="link"
-                className="mt-5 text-md border-black text-black cursor-pointer"
+                className="mt-2 text-md border-black text-black cursor-pointer"
               >
                 <Link
                   href={"https://www.instagram.com/sattis_studio/"}
@@ -92,6 +111,7 @@ export default function TattooSection() {
               </Button>
             </div>
           </div>
+
           
         </motion.div>
       </motion.div>
