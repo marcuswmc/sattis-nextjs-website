@@ -79,7 +79,7 @@ export default function TattooSection() {
               variant="outline"
               className="mt-2 text-md border-black text-black cursor-pointer w-fit"
             >
-              <Link href={"https://wa.me/5511947770426"} target="_blank">
+              <Link href={"https://breturintatua.carrd.co/?utm_source=ig&utm_medium=social&utm_content=link_in_bio"} target="_blank">
                 Orçamento Brenda <MessageCircle />
               </Link>
             </Button>

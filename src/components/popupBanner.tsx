@@ -5,7 +5,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { X } from "lucide-react";
 
-const WHATSAPP_URL = "https://wa.me/5511947770426";
 
 export default function PopupBanner() {
   const [visible, setVisible] = useState(false);
@@ -34,9 +33,9 @@ export default function PopupBanner() {
           fechar <X size={14} />
         </button>
 
-        <Link href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
+        <Link href={"https://breturintatua.carrd.co/?utm_source=ig&utm_medium=social&utm_content=link_in_bio"} target="_blank" rel="noopener noreferrer">
           <Image
-            src="/imgs/popup.jpeg"
+            src="/imgs/popup_new.jpeg"
             alt="Agenda Aberta - Porto, Portugal"
             width={500}
             height={700}
