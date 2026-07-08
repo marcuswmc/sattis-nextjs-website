@@ -5,7 +5,7 @@ const ALLOWED_MONDAY = ["2026-06-22"];
 const BLOCKED_DAYS = ["2026-06-24"];
 const ANDRE_BLOCKED_DAYS = ["2026-06-20", "2026-06-24", "2026-10-03"];
 const JI_BLOCKED_DAYS = ["2026-07-01", "2026-07-02"];
-const PAULINHA_BLOCKED_DAYS = ["2026-07-15", "2026-07-16", "2026-07-17", "2026-07-18", "2026-08-04", "2026-08-13", "2026-08-14", "2026-08-15"];
+const PAULINHA_BLOCKED_DAYS = ["2026-07-15", "2026-07-18", "2026-08-04", "2026-08-13", "2026-08-14", "2026-08-15"];
 
 export function isDateDisabled(
   date: Date,
