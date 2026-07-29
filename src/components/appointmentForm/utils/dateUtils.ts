@@ -1,11 +1,11 @@
 import { format } from "date-fns";
 import filterAvailableTimes, { TimeRule } from "./availableTimeUtils";
 
-const ALLOWED_MONDAY = ["2026-06-22"];
-const BLOCKED_DAYS = ["2026-06-24"];
-const ANDRE_BLOCKED_DAYS = ["2026-06-20", "2026-06-24", "2026-10-03"];
-const JI_BLOCKED_DAYS = ["2026-07-01", "2026-07-02"];
-const PAULINHA_BLOCKED_DAYS = ["2026-07-15", "2026-07-18", "2026-08-04", "2026-08-13", "2026-08-14", "2026-08-15"];
+const ALLOWED_MONDAY = [""];
+const BLOCKED_DAYS = [""];
+const ANDRE_BLOCKED_DAYS = ["2026-10-03"];
+const JI_BLOCKED_DAYS = [""];
+const PAULINHA_BLOCKED_DAYS = ["2026-07-15", "2026-07-18", "2026-08-04","2026-08-06", "2026-08-13", "2026-08-14", "2026-08-15"];
 
 export function isDateDisabled(
   date: Date,
@@ -77,19 +77,7 @@ export function getFilteredTimes(
 
   // Default rules per professional. Adjust or extend as needed.
   const PROFESSIONAL_DEFAULT_RULES: Record<string, TimeRule[]> = {
-     Ji: [
-      {
-        professional: "Ji",
-        blockRanges: [{ from: "14:30", to: "19:45" }],
-        days: ["2026-06-30"],
-      },
-    ],
     Paulinha: [
-      {
-        professional: "Paulinha",
-        blockRanges: [{ from: "14:30", to: "19:45" }],
-        days: ["2026-07-17"],
-      },
       {
         professional: "Paulinha",
         blockRanges: [{ from: "14:30", to: "19:45" }],

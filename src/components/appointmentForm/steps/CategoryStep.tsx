@@ -66,8 +66,8 @@ export default function CategoryStep({
               </Button>
             ))
           ) : (
-            <p className="text-sm text-muted-foreground">
-              Nenhuma área disponível para esta data.
+            <p className="text-sm text-muted-foreground flex flex-col items-center justify-center">
+              Temporariamente indisponivel.
             </p>
           )}
 
