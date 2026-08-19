@@ -35,7 +35,7 @@ export default function PopupBanner() {
 
         <Link href={"https://breturintatua.carrd.co/?utm_source=ig&utm_medium=social&utm_content=link_in_bio"} target="_blank" rel="noopener noreferrer">
           <Image
-            src="/imgs/popup_new.jpeg"
+            src="/imgs/popup_update.webp"
             alt="Agenda Aberta - Porto, Portugal"
             width={500}
             height={700}
