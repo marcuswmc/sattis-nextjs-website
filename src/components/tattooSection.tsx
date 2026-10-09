@@ -24,8 +24,7 @@ const itemVariantsRight = {
 };
 
 export default function TattooSection() {
-
-  const t = useTranslations('tattoo-section')
+  const t = useTranslations("tattoo-section");
 
   return (
     <motion.section
@@ -40,9 +39,14 @@ export default function TattooSection() {
         variants={itemVariantsLeft}
         className="relative w-full md:w-[50%]"
       >
-        <Image src={tattooSectionImg} alt="Tattoo" quality={100} className="w-full h-full object-cover object-center" />
+        <Image
+          src={tattooSectionImg}
+          alt="Tattoo"
+          quality={100}
+          className="w-full h-full object-cover object-center"
+        />
         <span className="absolute bottom-5 left-5 text-white text-6xl">
-          {t('section-title')}
+          {t("section-title")}
         </span>
       </motion.div>
 
@@ -56,37 +60,23 @@ export default function TattooSection() {
           className="flex flex-col gap-5"
         >
           <h3 className="text-3xl">
-            {t('f-line-title')}
+            {t("f-line-title")}
             <br />
-            {t('s-line-title')}
-            <br /> {t('t-line-title')}
+            {t("s-line-title")}
+            <br /> {t("t-line-title")}
           </h3>
-          <p>
-            {t('description')}
-          </p>
+          <p>{t("description")}</p>
         </motion.div>
 
-        <motion.div variants={itemVariantsRight} className="flex flex-col gap-6">
+        <motion.div
+          variants={itemVariantsRight}
+          className="flex flex-col gap-6">
           <div className="flex flex-col md:items-baseline md:gap-2">
-            <div className="flex flex-col gap-2 border-l-2 border-black pl-4">
-            <p className="text-sm font-semibold uppercase tracking-wide">Brenda Turin — Guest</p>
-            <p className="text-sm text-gray-600">
-              A Brenda estará a tatuar como convidada na Sattis Studio por tempo limitado.
-              Aproveita para marcares a tua sessão com ela diretamente.
-            </p>
-            <Button
-              asChild
-              variant="outline"
-              className="mt-2 text-md border-black text-black cursor-pointer w-fit"
-            >
-              <Link href={"https://breturintatua.carrd.co/?utm_source=ig&utm_medium=social&utm_content=link_in_bio"} target="_blank">
-                Orçamento Brenda <MessageCircle />
-              </Link>
-            </Button>
-          </div>
-          <div className="mt-10">
-            <p className="text-sm font-semibold uppercase tracking-wide">Tati Zaqui - Tattoo & piercing</p>
-          </div>
+            <div className="mt-4">
+              <p className="text-sm font-semibold uppercase tracking-wide">
+                Tati Zaqui - Tattoo & piercing
+              </p>
+            </div>
             <div className="flex items-center">
               <Button
                 asChild
@@ -94,7 +84,7 @@ export default function TattooSection() {
                 className="mt-2 text-md border-black text-black cursor-pointer"
               >
                 <Link href={"https://wa.me/351915335220"} target="_blank">
-                  {t('tattoo-book-btn')} <MessageCircle />
+                  {t("tattoo-book-btn")} <MessageCircle />
                 </Link>
               </Button>
               <Button
@@ -111,8 +101,6 @@ export default function TattooSection() {
               </Button>
             </div>
           </div>
-
-          
         </motion.div>
       </motion.div>
     </motion.section>
