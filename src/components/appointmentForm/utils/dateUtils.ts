@@ -5,7 +5,7 @@ const ALLOWED_MONDAY = [""];
 const BLOCKED_DAYS = [""];
 const ANDRE_BLOCKED_DAYS = ["2026-10-03"];
 const JI_BLOCKED_DAYS = [""];
-const PAULINHA_BLOCKED_DAYS = ["2026-09-26", "2026-10-02", "2026-10-06", "2026-10-07"];
+const PAULINHA_BLOCKED_DAYS = ["2026-11-21"];
 
 export function isDateDisabled(
   date: Date,
@@ -81,7 +81,7 @@ export function getFilteredTimes(
       {
         professional: "Paulinha",
         blockRanges: [{ from: "09:30", to: "12:30" }],
-        days: ["2026-10-03"],
+        days: ["2026-11-24"],
       },
     ]
   }; 
